@@ -1,0 +1,1 @@
+All pages are designed as static content for GitHub Pages. Replace contact details in site-config.js after verifying that the professional email account exists and can receive messages.
