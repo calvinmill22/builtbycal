@@ -3,5 +3,5 @@
 window.BUILTBYCAL = {
   github: 'https://github.com/calvinmill22',
   linkedin: '', // e.g. https://www.linkedin.com/in/your-name/
-  email: '', // e.g. calvin@builtbycal.com — leave empty until mailbox works
+  email: 'calvin@builtbycal.com', // Public professional inbox
 };
