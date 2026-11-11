@@ -49,7 +49,7 @@ def http_json(url, method="GET", body=None, headers=None, timeout=15):
 def jellyfin(path):
     if not JF or not KEY:
         raise RuntimeError("Set CALFLIX_JELLYFIN_URL and CALFLIX_JELLYFIN_API_KEY")
-    return http_json(JF + path, headers={"X-Emby-Token":KEY})
+    return http_json(JF + path, headers={"Authorization": f'MediaBrowser Token="{KEY}"'})
 
 def publish(path, value, message):
     if not TOKEN:
