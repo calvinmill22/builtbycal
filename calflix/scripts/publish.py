@@ -16,8 +16,8 @@ from datetime import datetime, timedelta, timezone
 from pathlib import Path
 
 REPO = "calvinmill22/builtbycal"
-JF = os.getenv("CALFLIX_JELLYFIN_URL", "").rstrip("/")
-KEY = os.getenv("CALFLIX_JELLYFIN_API_KEY", "")
+JF = (os.getenv("CALFLIX_JELLYFIN_URL") or os.getenv("ARTEMIS_JELLYFIN_BASE_URL", "")).rstrip("/")
+KEY = os.getenv("CALFLIX_JELLYFIN_API_KEY") or os.getenv("ARTEMIS_JELLYFIN_API_KEY", "")
 TOKEN = os.getenv("CALFLIX_GITHUB_TOKEN", "")
 OLLAMA = os.getenv("CALFLIX_OLLAMA_URL", "http://127.0.0.1:11434").rstrip("/")
 MODEL = os.getenv("CALFLIX_OLLAMA_MODEL", "artemis-v2")
