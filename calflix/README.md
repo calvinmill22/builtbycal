@@ -32,15 +32,17 @@ The site never assumes "online" because a file exists.
     nano ~/.config/artemis/calflix-publish.env
     chmod 600 ~/.config/artemis/calflix-publish.env
 
-   Enter your own real values (do NOT commit this file):
+   Artemis already has working Jellyfin settings in
+   ~/.config/artemis/integrations.env, using ARTEMIS_JELLYFIN_BASE_URL and
+   ARTEMIS_JELLYFIN_API_KEY. The installer loads that existing private file.
+   You only need to provide the GitHub publisher token here:
 
-    CALFLIX_JELLYFIN_URL=http://YOUR-PRIVATE-JELLYFIN-HOST:8096
-    CALFLIX_JELLYFIN_API_KEY=YOUR_JELLYFIN_API_KEY
     CALFLIX_GITHUB_TOKEN=YOUR_FINE_GRAINED_GITHUB_TOKEN
     CALFLIX_OLLAMA_URL=http://127.0.0.1:11434
     CALFLIX_OLLAMA_MODEL=artemis-v2
 
-   Get a Jellyfin API key in Jellyfin's admin dashboard. For GitHub use a
+   If Artemis has no working Jellyfin settings, optionally add CALFLIX_JELLYFIN_URL
+   and CALFLIX_JELLYFIN_API_KEY to this file as overrides. For GitHub use a
    **fine-grained personal access token**, repository access **only**
    calvinmill22/builtbycal, permission **Contents: Read and write**.
    Store both on Artemis only. Do NOT paste tokens into a chat, log, public repo,
@@ -49,6 +51,7 @@ The site never assumes "online" because a file exists.
 3. Test privately (sources the env in the shell, not in the repository):
 
     set -a
+    source ~/.config/artemis/integrations.env
     source ~/.config/artemis/calflix-publish.env
     set +a
     python3 ~/builtbycal-bridge/calflix/scripts/publish.py health
@@ -73,6 +76,7 @@ Create the user unit files, using these exact contents.
     Description=Publish CalFlix status to BuiltByCal
     [Service]
     Type=oneshot
+    EnvironmentFile=-%h/.config/artemis/integrations.env
     EnvironmentFile=%h/.config/artemis/calflix-publish.env
     ExecStart=/usr/bin/python3 %h/builtbycal-bridge/calflix/scripts/publish.py health
 
@@ -106,11 +110,9 @@ Create the user unit files, using these exact contents.
     [Install]
     WantedBy=timers.target
 
-Enable timers:
+Enable timers with the included setup script (or create the above units yourself):
 
-    systemctl --user daemon-reload
-    systemctl --user enable --now calflix-health.timer calflix-weekly.timer
-    systemctl --user list-timers --all | grep calflix
+    bash ~/builtbycal-bridge/calflix/scripts/install-timers.sh
 
 If user services stop when the SSH session ends, configure systemd user lingering
 for arty as appropriate. To refresh script changes later, run:
