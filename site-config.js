@@ -1,4 +1,4 @@
-// Public contact config — only enable email AFTER you have activated and tested Spacemail.
+// Public contact config. The mailbox routes through Spacemail; forwarding to a private inbox is configured separately.
 // This is not a place to put credentials, API keys, passwords, or personal account tokens.
 window.BUILTBYCAL = {
   github: 'https://github.com/calvinmill22',
