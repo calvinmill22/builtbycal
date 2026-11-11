@@ -1,0 +1,68 @@
+
+/* BuiltByCal employer portal: scoped to .employer-site and .resume-page */
+.employer-site .employer-hero{padding:84px 0 64px}
+.employer-site .employer-hero h1{font:700 clamp(43px,6vw,76px)/1.07 'Space Grotesk',sans-serif;letter-spacing:-.065em;max-width:970px;margin:18px 0}
+.employer-site .employer-hero h1 em{font-style:normal;color:var(--mint)}
+.employer-site .employer-hero .lead{max-width:780px}
+.employer-site .role-strip{display:flex;gap:9px;flex-wrap:wrap;margin:27px 0 0}
+.employer-site .role-strip span{padding:8px 11px;border:1px solid #416270;border-radius:30px;color:#d9e8e9;font:500 11px 'DM Mono',monospace}
+.employer-site .resume-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.employer-site .resume-card{background:linear-gradient(140deg,#142a33,#101b26);padding:29px;border:1px solid var(--border);border-radius:18px;display:flex;flex-direction:column;min-height:325px}
+.employer-site .resume-card:hover{border-color:#6cbeb3}
+.employer-site .resume-card .eyebrow{margin:0}
+.employer-site .resume-card h3{font:700 27px/1.14 'Space Grotesk',sans-serif;letter-spacing:-.035em;margin:24px 0 14px}
+.employer-site .resume-card p{color:var(--muted);font-size:14px;flex:1}
+.employer-site .card-actions{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:25px}
+.employer-site .card-actions a{color:var(--mint);font:600 12px 'DM Mono',monospace;text-decoration:none}
+.employer-site .card-actions a.secondary{color:var(--muted)}
+.employer-site .proof-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.employer-site .proof{border-top:2px solid var(--mint);background:#11212b;padding:24px}
+.employer-site .proof strong{font:700 31px 'Space Grotesk',sans-serif;color:#fff;letter-spacing:-.04em}
+.employer-site .proof p{color:var(--muted);font-size:13px;margin-bottom:0}
+.employer-site .fit-panel{padding:40px;border:1px solid #44716e;border-radius:22px;background:linear-gradient(115deg,#13323a,#172330)}
+.employer-site .fit-panel h2{font:700 clamp(29px,4vw,46px) 'Space Grotesk',sans-serif;letter-spacing:-.05em;margin:12px 0}
+.employer-site .fit-panel p{color:var(--muted);max-width:720px}
+.employer-site .fit-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin:24px 0}
+.employer-site .fit-grid article{border:1px solid #41626f;padding:19px;border-radius:12px;background:#0d1d28a6}
+.employer-site .fit-grid strong{display:block;font:600 17px 'Space Grotesk',sans-serif}
+.employer-site .fit-grid span{font-size:13px;color:#bccfd6}
+.employer-site .simple-link{color:var(--mint);text-decoration:none}
+.employer-site .footer-note{font-size:12px;color:var(--muted);margin-top:25px}
+.resume-page{background:#e9eef2;color:#1b2a35;min-height:100vh}
+.resume-page .resume-top{background:#091019;color:#f5f8fa;padding:16px 0;border-bottom:2px solid #7de4ce}
+.resume-page .resume-top .container{display:flex;align-items:center;gap:12px;justify-content:space-between;flex-wrap:wrap}
+.resume-page .resume-top a{color:#7de4ce;text-decoration:none;font:600 12px 'DM Mono',monospace}
+.resume-page .resume-top button{cursor:pointer;border:0;border-radius:7px;color:#081b1e;background:#7de4ce;font:700 13px 'DM Sans',sans-serif;padding:12px 15px}
+.resume-page .resume-tools{display:flex;gap:16px;align-items:center}
+.resume-page .paper{background:white;color:#1d2c36;max-width:920px;margin:35px auto 80px;padding:55px 62px;box-shadow:0 24px 65px #223e5030}
+.resume-page .paper h1{font:700 39px/1 'Space Grotesk',sans-serif;letter-spacing:-.06em;color:#102a35;margin:0 0 10px}
+.resume-page .paper .position{font:600 13px 'DM Mono',monospace;color:#286e73;text-transform:uppercase;letter-spacing:.045em;margin:0 0 10px}
+.resume-page .paper .contactline{color:#3f5866;font:500 12px/1.65 'DM Sans',sans-serif;border-bottom:2px solid #8aa3ad;padding-bottom:18px}
+.resume-page .paper .contactline a{color:#286e73}
+.resume-page .paper h2{font:700 15px/1.2 'Space Grotesk',sans-serif;color:#145965;text-transform:uppercase;letter-spacing:.085em;border-bottom:1px solid #d4dde2;padding-bottom:6px;margin:25px 0 11px}
+.resume-page .paper h3{font:700 15px/1.35 'DM Sans',sans-serif;margin:16px 0 4px;color:#1e3540}
+.resume-page .paper .when{color:#5b6b73;font-size:12px}
+.resume-page .paper p,.resume-page .paper li{font:400 13px/1.6 'DM Sans',sans-serif;color:#243742}
+.resume-page .paper p{margin:7px 0}
+.resume-page .paper ul{margin:6px 0 12px;padding-left:19px}
+.resume-page .paper li{margin:4px 0}
+.resume-page .paper .skills{display:grid;grid-template-columns:1fr;gap:8px}
+.resume-page .paper .skills p{margin:0}
+.resume-page .paper strong{color:#172e3b}
+.resume-page .paper .note{font-size:11px;color:#5a6c75}
+@media(max-width:850px){.employer-site .resume-grid,.employer-site .proof-grid{grid-template-columns:1fr}.employer-site .fit-grid{grid-template-columns:1fr}}
+@media(max-width:650px){.resume-page .paper{margin:0;padding:27px 20px;box-shadow:none}.resume-page .paper h1{font-size:32px}.employer-site .employer-hero{padding-top:58px}.employer-site .fit-panel{padding:25px}}
+@media print{
+@page{size:letter;margin:.52in}
+html,body,.resume-page{background:white!important;color:#111!important}
+.resume-page .resume-top,.resume-page .resume-tools,.resume-page footer{display:none!important}
+.resume-page .paper{margin:0!important;padding:0!important;max-width:none!important;box-shadow:none!important}
+.resume-page .paper h1{font-size:30px}
+.resume-page .paper h2{break-after:avoid;margin-top:18px}
+.resume-page .paper h3{break-after:avoid}
+.resume-page .paper p,.resume-page .paper li{font-size:10.6px;line-height:1.42}
+.resume-page .paper li{margin:2px 0}
+.resume-page .paper .contactline{font-size:10px}
+.resume-page .paper a{color:inherit;text-decoration:none}
+.resume-page .paper ul{break-inside:auto}
+}
