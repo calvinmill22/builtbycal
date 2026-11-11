@@ -21,6 +21,7 @@ cat >"$DIR/calflix-health.service" <<'EOF'
 Description=Publish CalFlix availability heartbeat
 [Service]
 Type=oneshot
+EnvironmentFile=-%h/.config/artemis/integrations.env
 EnvironmentFile=%h/.config/artemis/calflix-publish.env
 ExecStart=/usr/bin/python3 %h/builtbycal-bridge/calflix/scripts/publish.py health
 EOF
@@ -39,6 +40,7 @@ cat >"$DIR/calflix-weekly.service" <<'EOF'
 Description=Publish CalFlix weekly dispatch from Artemis
 [Service]
 Type=oneshot
+EnvironmentFile=-%h/.config/artemis/integrations.env
 EnvironmentFile=%h/.config/artemis/calflix-publish.env
 ExecStart=/usr/bin/python3 %h/builtbycal-bridge/calflix/scripts/publish.py weekly
 EOF
