@@ -19,6 +19,7 @@ RoadBoxOS / Inventory MVP (independent, begun October 2025): Serialized tools, k
 AtomicOS Quartermaster (workplace implementation, 2026): FastAPI/Uvicorn/SQLAlchemy/SQLite WAL, JWT, Pi-hosted Linux, DHCP Wi-Fi access point, systemd, scanner and workflows.
 Artemis (independent, 2026): Proxmox VE, Ubuntu VM, GPU passthrough, Ollama/Qwen3:8b, voice and local knowledge, hardware health and service diagnosis.
 CalFlix (independent, 2026): Private Jellyfin on Linux Mint, Tailscale remote access, external storage, 10+ users.
+Starloomer Mini Games CORE (independent, 2026): Four interconnected Python/FastAPI minigames sharing an SQLite WAL crew and station database. Junk Run includes station-health dashboards, salvage choices and resource-funded repairs; Engineering Panic coordinates 2–4 crew across deliberately nonsensical distributed console instructions; Signal Sweep discovers salvage locations; Space Ace uses real-time Canvas arcade mechanics. Public browser-adapted interfaces on BuiltByCal; private shared database not published.
 Watchtower (independent prototype): ADS-B aircraft receiver/collector, SQLite events and local map/API with Artemis integration planned.
 Pantry Tracker (independent prototype): Demonstrated household inventory application; interest from an experienced software engineer.
 
