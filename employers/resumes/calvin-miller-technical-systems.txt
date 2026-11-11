@@ -1,0 +1,26 @@
+CALVIN MILLER
+BUSINESS SYSTEMS | SOFTWARE DEVELOPMENT | LINUX INFRASTRUCTURE
+Harrisburg area, PA | calvin@builtbycal.com | https://builtbycal.com | https://github.com/calvinmill22
+
+SUMMARY
+Self-taught systems builder and operations professional designing database-backed business applications and administering Linux infrastructure. Converts operational pain points into requirements, relational models, scanning interfaces, deployed services, testing, reporting and user support.
+
+TECHNICAL STRENGTHS
+Python; FastAPI/Uvicorn; SQLite; SQLAlchemy; SQL fundamentals; JWT roles; QR/barcode scanning; Linux; Ubuntu Server; Raspberry Pi; Proxmox; systemd; SSH; Tailscale; requirements discovery; acceptance testing; defect reproduction; asset reconciliation; SOPs and reporting.
+
+PROJECTS
+RoadBoxOS/Inventory MVP, independent 2025-present: Inventory families and serialized assets, kits, show deployment, scanning, checkouts/returns, replenishment/billing, PDF exports and bug reporting; iterations through v0.23.4.
+AtomicOS, workplace 2026: FastAPI, Uvicorn, SQLite WAL, SQLAlchemy, JWT, Wi-Fi AP/DHCP, Raspberry Pi/systemd, scanner integration, authentication, inventory and activity logs.
+Artemis, independent 2026: Proxmox/Ubuntu VM, GPU passthrough/RTX 3060/NVIDIA/CUDA, Ollama Qwen3 8B, service management, hardware/uptime investigation, voice and lighting prototypes.
+CalFlix, independent 2026: Linux Mint/Jellyfin/Tailscale, storage management, remote access and support for 10+ users.
+Pantry Tracker: Household inventory prototype and workflow demonstration.
+
+EXPERIENCE
+ATOMIC Design — Road Support Coordinator, 2026-present: Seven road-technician kits, approx. $250,000 in serialized assets, software-assisted workflows, readiness, resupply, reconciliation, exception reporting, and approximately $17,000 tool plus $25,000 merchandise return value identified/recovered in first eight months.
+3D Makers Warehouse — Co-Founder, 2020-present: 3D-printed functional prototypes, repeatable fabrication, materials/reliability/process tuning.
+ATOMIC Design — Scenic Technician / Project Integration, 2018-2026: Field/shop technical system integration and cross-team troubleshooting.
+Cirque du Soleil — Assistant Head Carpenter / Head Special FX, 2022-2023.
+Mojo Barriers North America — Lead U.S. Technician, 2014-2017.
+
+EDUCATION
+Central York High School, Diploma, 2012. Penn State York, undergraduate general-education coursework (no degree).

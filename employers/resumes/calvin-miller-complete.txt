@@ -1,0 +1,40 @@
+CALVIN MILLER
+COMPREHENSIVE CAREER AND SKILLS RECORD
+Harrisburg area, PA | calvin@builtbycal.com | builtbycal.com | github.com/calvinmill22
+
+SUMMARY
+Multi-disciplinary technical operations professional and self-taught systems builder with 15+ years in technical production and hands-on systems, plus independent software, Linux infrastructure, automation and prototyping work. Bridges physical equipment, software, people and operations. Experienced with ambiguous problems, deadline-driven delivery and real-world troubleshooting.
+
+SOFTWARE AND DATA
+Python; JavaScript; HTML; CSS; FastAPI; Uvicorn; SQLite; SQLAlchemy; SQL fundamentals; relational data modeling; REST-oriented web services; JWT roles; inventory/asset tracking; CRUD interfaces; barcode and QR workflows; reports/PDF exports; application testing and bug documentation; AI-assisted development.
+
+INFRASTRUCTURE
+Linux Mint; Ubuntu Server; Proxmox VE; virtual machines; Raspberry Pi; SSH; systemd; NVIDIA GPU passthrough; CUDA; Ollama; local Qwen3 models; Linux monitoring and logs; network addressing/subnets; Wi-Fi AP; DHCP; mDNS; Tailscale; MagicDNS; storage and remote user onboarding.
+
+HARDWARE, FABRICATION AND OPERATIONS
+Mechanical/electronic troubleshooting; additive manufacturing/3D printing; prototyping/materials/print optimization; tooling, serialized inventory, equipment readiness, reconciliation, process improvement, requirements, technical documentation, incident support, cross-functional coordination, field installation, rigging, live production, crew support.
+
+PROJECTS
+RoadBoxOS / Inventory MVP (independent, begun October 2025): Serialized tools, kits, locations, shows, deployment/return, scanning, QR, discrepancies, resupply, billing, reporting, iterations through v0.23.4.
+AtomicOS Quartermaster (workplace implementation, 2026): FastAPI/Uvicorn/SQLAlchemy/SQLite WAL, JWT, Pi-hosted Linux, DHCP Wi-Fi access point, systemd, scanner and workflows.
+Artemis (independent, 2026): Proxmox VE, Ubuntu VM, GPU passthrough, Ollama/Qwen3:8b, voice and local knowledge, hardware health and service diagnosis.
+CalFlix (independent, 2026): Private Jellyfin on Linux Mint, Tailscale remote access, external storage, 10+ users.
+Watchtower (independent prototype): ADS-B/aircraft data acquisition and local API integration exploration; planned notification/commute features.
+Pantry Tracker (independent prototype): Household inventory application.
+
+WORK HISTORY
+ATOMIC Design — Road Support Coordinator, 2026-present. Seven road-tech kits, approx. $250k serialized asset scope; about $17k tools and $25k merchandise return value identified/recovered in first eight months; process design, reconciliation, reporting, purchasing support.
+3D Makers Warehouse — Co-Founder, 2020-present. 3D printing, prototyping and repeatable fabrication workflows.
+ATOMIC Design / IATSE Local 97 — Scenic Technician / Project Integration, 2018-2026. Technical field/shop integrations, installation, troubleshooting, coordination.
+Cirque du Soleil — Assistant Head Carpenter / Head Special FX, 2022-2023. Crew coordination, technical show operations and troubleshooting.
+Filmwerks — Technical production engagements, 2022.
+Mojo Barriers North America — Lead U.S. Technician, 2014-2017. Equipment and on-site field execution.
+Additional earlier roles and engagements: OTC Fleet Service (approx. 2013-2014); The Apartments at Waterford; Production Express; A Charlie Brown Christmas production.
+
+EDUCATION
+Central York High School, diploma 2012. Penn State York general education coursework (no degree). Self-directed development in software, Linux/networking, AI, fabrication, hardware integration. No unverified formal certifications listed.
+
+OPPORTUNITIES
+Infrastructure operations; NOC; business systems; technical integration; implementation; internal tools; technical operations; additive manufacturing; field engineering; aerospace/advanced manufacturing. Remote roles preferred; open to exceptional opportunities across the Mid-Atlantic and beyond.
+
+Independent software concepts are distinguished from workplace operational implementations. Proprietary data and credentials excluded.
