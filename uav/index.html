@@ -1,0 +1,129 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#091019">
+<meta name="description" content="Calvin Miller's FPV and UAV fleet: freestyle quads, a seven-inch cruiser, a large hexacopter, fixed-wing exploration and the engineering behind the aircraft.">
+<meta property="og:title" content="UAV Fleet | Built By Cal">
+<meta property="og:description" content="From flight simulators and homebuilt FPV quads to radio systems, custom airframes, and experimental observation platforms.">
+<meta property="og:type" content="website"><meta property="og:url" content="https://builtbycal.com/uav/">
+<link rel="canonical" href="https://builtbycal.com/uav/">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="../styles.css">
+<title>UAV Fleet &amp; FPV Lab | Built By Cal</title>
+<style>
+.uav{--cyan:#7de4ce;--amber:#ffbd83}
+.uav .uav-hero{padding:85px 0 70px;position:relative;overflow:hidden}
+.uav .uav-hero:before{content:"";position:absolute;right:-20vw;top:-180px;width:850px;height:700px;border-radius:50%;background:radial-gradient(ellipse,#206c7138,transparent 69%);pointer-events:none}
+.uav .uav-hero .container{position:relative}
+.uav .uav-hero-grid{display:grid;grid-template-columns:1.08fr .92fr;gap:50px;align-items:center}
+.uav .overline{font:500 11px 'DM Mono',monospace;letter-spacing:.2em;color:var(--orange);text-transform:uppercase}
+.uav .uav-hero h1{font:700 clamp(49px,6vw,83px)/1.04 'Space Grotesk',sans-serif;letter-spacing:-.075em;margin:20px 0 24px}
+.uav .uav-hero h1 span{color:var(--mint)}
+.uav .uav-hero p{font-size:17px;line-height:1.85;color:#c5d8e0;max-width:715px}
+.uav .hero-links{display:flex;gap:12px;flex-wrap:wrap;margin-top:28px}
+.uav .visual{padding:28px;border:1px solid #486973;border-radius:20px;background:linear-gradient(145deg,#183743,#0e1b29);box-shadow:0 30px 75px #0004}
+.uav .visual-head{display:flex;align-items:center;justify-content:space-between;gap:15px;border-bottom:1px solid #44636d;padding-bottom:16px;color:#b2d2d6;font:500 10px 'DM Mono',monospace;letter-spacing:.12em}
+.uav .visual-head b{color:var(--mint);font-weight:500}
+.uav .airframe{display:block;max-width:360px;width:100%;height:auto;margin:10px auto 0}
+.uav .diagram-note{display:flex;align-items:center;justify-content:space-between;gap:12px;border-top:1px solid #44636d;padding-top:12px;font:400 11px/1.5 'DM Mono',monospace;color:#adcbd0}
+.uav .signal-dots{display:flex;gap:5px}.uav .signal-dots i{display:block;height:6px;width:6px;border-radius:50%;background:#7de4ce}
+.uav .section-head{margin-bottom:29px;max-width:940px}
+.uav .section-head h2{font:700 clamp(32px,4.1vw,52px)/1.1 'Space Grotesk',sans-serif;letter-spacing:-.055em;margin:14px 0 15px}
+.uav .section-head p{color:#b6cdd5;font-size:16px;line-height:1.75}
+.uav .uav-section{padding:75px 0}
+.uav .fleet-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.uav .craft{border-radius:18px;padding:29px;min-width:0;border:1px solid #365160;background:linear-gradient(145deg,#132733,#101d28);display:flex;flex-direction:column}
+.uav .craft-top{display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:20px}
+.uav .craft-number{font:500 11px 'DM Mono',monospace;color:var(--orange);letter-spacing:.1em}
+.uav .craft-status{font:500 10px/1.5 'DM Mono',monospace;color:#b9ddd6;border:1px solid #4b7c76;border-radius:20px;padding:5px 10px;text-align:center}
+.uav .craft h3{font:700 clamp(24px,2.7vw,34px)/1.15 'Space Grotesk',sans-serif;letter-spacing:-.04em;margin:0 0 14px}
+.uav .craft p{color:#b9ced8;font-size:15px;line-height:1.75;margin:0 0 23px}
+.uav .spec-row{display:flex;gap:8px;flex-wrap:wrap;margin-top:auto}
+.uav .spec-row span{border:1px solid #45616c;border-radius:15px;padding:7px 10px;font:400 11px/1.35 'DM Mono',monospace;color:#d4e8ea}
+.uav .design-note{font:400 12px/1.65 'DM Mono',monospace;color:#abc5cd;margin-top:19px}
+.uav .bridge{padding:83px 0;background:#0e1b26;border-top:1px solid #294450;border-bottom:1px solid #294450}
+.uav .bridge-grid{display:grid;grid-template-columns:1fr 1fr;gap:30px}
+.uav .bridge h2{font:700 clamp(31px,4vw,47px)/1.14 'Space Grotesk',sans-serif;letter-spacing:-.055em;margin:15px 0 22px}
+.uav .bridge p{color:#bfd2dc;line-height:1.85}
+.uav .system-flow{border:1px solid #3e626c;border-radius:16px;background:linear-gradient(130deg,#17313b,#112430);padding:26px}
+.uav .flow-label{font:500 11px 'DM Mono',monospace;color:var(--mint);letter-spacing:.12em;text-transform:uppercase}
+.uav .flow-steps{display:grid;gap:9px;margin:19px 0 0}
+.uav .flow-steps div{padding:12px 14px;border:1px solid #415c68;border-radius:9px;font:500 13px 'DM Mono',monospace;color:#d0e8e9}
+.uav .flow-steps b{font-weight:500;color:var(--orange);margin-right:12px}
+.uav .next-steps{padding:80px 0 100px}
+.uav .next-panel{background:linear-gradient(110deg,#15363b,#14232e);border:1px solid #51817c;border-radius:19px;padding:43px;display:flex;justify-content:space-between;gap:35px;align-items:center}
+.uav .next-panel h2{font:700 clamp(28px,3.8vw,45px)/1.15 'Space Grotesk',sans-serif;letter-spacing:-.05em;margin:11px 0}
+.uav .next-panel p{color:#c0d7d9;max-width:740px}
+.uav .next-panel .button{white-space:nowrap}
+@media(max-width:920px){.uav .uav-hero-grid,.uav .bridge-grid{grid-template-columns:1fr}.uav .visual{max-width:550px}.uav .next-panel{flex-direction:column;align-items:flex-start}}
+@media(max-width:680px){.uav .uav-hero{padding:55px 0}.uav .uav-hero h1{font-size:52px}.uav .uav-section{padding:65px 0}.uav .fleet-grid{grid-template-columns:1fr}.uav .craft{padding:24px}.uav .next-panel{padding:26px}.uav .next-panel .button{white-space:normal}}
+@media(prefers-reduced-motion:reduce){.uav *{scroll-behavior:auto}}
+</style>
+</head>
+<body class="uav">
+<header><div class="container navbar"><a class="wordmark" href="../" aria-label="Built By Cal home"><span class="logo-icon">BC</span><span class="logo-label">BUILT<span>BY</span>CAL<span>.</span></span></a><button class="nav-button" aria-controls="site-nav" aria-expanded="false">Menu</button><nav id="site-nav" aria-label="Main navigation"><a href="../#work">Projects</a><a href="#fleet">UAV Fleet</a><a href="#engineering">Engineering</a><a href="../employers/journey.html">My Journey</a><a href="../contact/?topic=project">Contact</a></nav></div></header>
+<main>
+<section class="uav-hero"><div class="container">
+<a class="back" href="../#work">← Back to my work</a>
+<div class="uav-hero-grid">
+<div>
+<p class="overline">SIDEBAND // UAV &amp; FPV LAB</p>
+<h1>Built to fly.<br><span>Built to understand.</span></h1>
+<p>I've been fascinated by flight since childhood: first radio-controlled aircraft and simulators, then amateur radio, and finally my own FPV builds beginning in <strong>2018</strong>. For years I had the tools and drive but not the spare money. When I finally started building, all that time spent learning flight dynamics paid off.</p>
+<p>These machines are where my interests in aerodynamics, electronics, fabrication, radio links, software, and real-world troubleshooting come together. Some have flown for years; others are still experiments on the bench. Both belong in the story.</p>
+<div class="hero-links"><a class="button button-main" href="#fleet">Explore the fleet ↗</a><a class="button button-ghost" href="#engineering">How I build ↗</a></div>
+</div>
+<div class="visual" aria-label="Stylized diagram of a quadcopter, not a photograph of a specific aircraft">
+<div class="visual-head"><span>FIELD NOTES // MULTIROTOR SYSTEMS</span><b>FPV / RF / CONTROL</b></div>
+<svg class="airframe" viewBox="0 0 360 355" role="img" aria-label="Top-down schematic quadcopter silhouette with four rotors">
+<defs><linearGradient id="line" x1="0" x2="1"><stop stop-color="#7de4ce"/><stop offset="1" stop-color="#5c8c9d"/></linearGradient></defs>
+<g opacity=".25" stroke="#7de4ce" fill="none"><circle cx="180" cy="172" r="132" stroke-dasharray="5 8"/><circle cx="180" cy="172" r="92" stroke-dasharray="4 9"/><path d="M180 12V340M13 172H347" stroke-dasharray="3 9"/></g>
+<g fill="none" stroke="url(#line)" stroke-width="17" stroke-linecap="round"><path d="M174 168L94 86M186 168L266 86M174 183L94 263M186 183L266 263"/></g>
+<g fill="#0d2631" stroke="#7de4ce" stroke-width="4"><circle cx="81" cy="74" r="39"/><circle cx="279" cy="74" r="39"/><circle cx="81" cy="280" r="39"/><circle cx="279" cy="280" r="39"/></g>
+<g stroke="#9adccf" stroke-width="2" opacity=".75"><path d="M54 48L108 101M108 48L54 101M252 48L306 101M306 48L252 101M54 254L108 307M108 254L54 307M252 254L306 307M306 254L252 307"/></g>
+<path d="M163 125L196 125L220 168L204 226L155 226L139 168Z" fill="#183f46" stroke="#7de4ce" stroke-width="3"/>
+<rect x="159" y="151" width="43" height="43" rx="7" fill="#0b1b25" stroke="#ffbd83" stroke-width="2"/>
+<path d="M171 139L190 139" stroke="#ffbd83" stroke-width="3"/><path d="M179 118L179 101" stroke="#ffbd83" stroke-width="3"/>
+<g font-family="monospace" font-size="10" fill="#ffbd83"><text x="189" y="26">RF LINK</text><text x="145" y="326">CONTROL + POWER</text></g>
+</svg>
+<div class="diagram-note"><span>ILLUSTRATIVE AIRFRAME SCHEMATIC</span><span class="signal-dots" aria-hidden="true"><i></i><i></i><i></i></span></div>
+</div>
+</div>
+</div></section>
+<section class="uav-section" id="fleet"><div class="container">
+<div class="section-head"><p class="eyebrow">The hardware, the learning, the experiments</p><h2>The fleet and the workbench.</h2><p>A mix of personally flown multirotors and projects still being built or explored. Status matters; I don't call a concept a completed aircraft.</p></div>
+<div class="fleet-grid">
+<article class="craft"><div class="craft-top"><span class="craft-number">01 / MULTIROTOR</span><span class="craft-status">Owned · flown</span></div><h3>7-inch freestyle cruiser</h3>
+<p>My favorite heavyweight FPV cruiser: oversized motors, an analog video setup, and a flight personality that can shift between aggressive 6S freestyle and relaxed, endurance-oriented cruising. With bi-blade props and a pair of matching 4S packs in parallel, I've seen approximately <strong>25-minute cruises</strong>. A brief experiment with DJI digital video ultimately sent me back to analog.</p><div class="spec-row"><span>7-inch</span><span>6S-capable</span><span>Analog FPV</span><span>2.4 GHz ExpressLRS</span><span>TX16S</span></div></article>
+<article class="craft"><div class="craft-top"><span class="craft-number">02 / MULTIROTOR</span><span class="craft-status">Early FPV build</span></div><h3>5-inch freestyle quad</h3>
+<p>The aircraft class that made FPV real for me after years of simulators. My original 4S freestyle machine used an open-source frame and analog 5.8 GHz video. It taught me how every component choice—frame, powertrain, radio, camera, and tune—affects the experience in the air.</p><div class="spec-row"><span>5-inch</span><span>4S</span><span>Open-source frame</span><span>Analog 5.8 GHz FPV</span></div></article>
+<article class="craft"><div class="craft-top"><span class="craft-number">03 / LARGE MULTIROTOR</span><span class="craft-status">Owned · integration platform</span></div><h3>12-inch-prop hexacopter</h3>
+<p>A large six-rotor airframe that opens up a different engineering conversation: payloads, power distribution, endurance, mounting, and reliable radio coverage. I'm exploring it as a potential airborne relay platform for <strong>Meshtastic</strong> experiments, rather than presenting the relay mission as a finished deployment.</p><div class="spec-row"><span>Hexacopter</span><span>12-inch props</span><span>Payload integration</span><span>Meshtastic concept</span></div></article>
+<article class="craft"><div class="craft-top"><span class="craft-number">04 / SMALL MULTIROTOR</span><span class="craft-status">Part-built</span></div><h3>3.5-inch FPV project</h3>
+<p>A smaller quadcopter build still on the bench. It's a chance to explore packaging, weight, component selection, and the trade-offs between agility, portability, power, and serviceability without pretending the aircraft is finished.</p><div class="spec-row"><span>3.5-inch</span><span>Work in progress</span><span>Packaging &amp; tuning</span></div></article>
+<article class="craft"><div class="craft-top"><span class="craft-number">05 / FIXED WING</span><span class="craft-status">Development concept</span></div><h3>Twin-engine observation platform</h3>
+<p>A longer-range fixed-wing concept for exploring different endurance, control-link, sensing, and airframe trade-offs than multirotors allow. This is an ongoing engineering direction, not a claim that a complete long-range observation aircraft is currently operational.</p><div class="spec-row"><span>Twin-engine concept</span><span>Fixed-wing dynamics</span><span>Radio &amp; sensing</span></div></article>
+<article class="craft"><div class="craft-top"><span class="craft-number">06 / GROUND SYSTEMS</span><span class="craft-status">Exploratory</span></div><h3>Ground robotics &amp; telemetry</h3>
+<p>Experiments and ideas around remotely operated ground platforms, field observation, radio links, and sensor integration. The underlying challenge is familiar: make electrical, mechanical, control, and information systems cooperate outside the comfort of a laboratory.</p><div class="spec-row"><span>Ground platforms</span><span>Telemetry</span><span>System integration</span></div></article>
+</div>
+<p class="design-note">Aircraft and build statuses describe my projects as discussed in 2026, not a live flight-readiness register. Performance depends on configuration and operating conditions.</p>
+</div></section>
+<section class="bridge" id="engineering"><div class="container bridge-grid">
+<div><p class="eyebrow">More than flying</p><h2>It's a systems integration laboratory with propellers.</h2>
+<p>Years of simulator practice gave me the intuition to fly; building aircraft forced me to connect it to reality. An FPV system is mechanical design, power electronics, firmware, radio propagation, user controls, human factors, and field troubleshooting—all in one small machine.</p>
+<p>That mindset also runs through my <a class="repo-link" href="../projects/watchtower.html">Watchtower ADS-B receiver</a> and <a class="repo-link" href="../projects/artemis.html">Artemis local AI lab</a>. They are separate projects today, with interesting possibilities for future sensor and radio-data integrations.</p>
+<p>My earlier <a class="repo-link" href="../employers/journey.html">amateur radio experience</a> also shaped how I think about antennas, links, and the people who pass technical knowledge down.</p></div>
+<div class="system-flow"><div class="flow-label">One aircraft / multiple disciplines</div><div class="flow-steps">
+<div><b>01</b> Airframe, motors, balance &amp; power</div>
+<div><b>02</b> Flight control, configuration &amp; tuning</div>
+<div><b>03</b> Radio control, FPV video &amp; antennas</div>
+<div><b>04</b> Pilot feedback, simulation &amp; testing</div>
+<div><b>05</b> Troubleshoot, rebuild, improve, repeat</div>
+</div></div>
+</div></section>
+<section class="next-steps"><div class="container"><div class="next-panel"><div><p class="eyebrow">New to FPV? Have a build in mind?</p><h2>Tell me what you're trying to fly.</h2><p>Whether you're curious about getting started, need a second set of eyes on a build, or want to discuss a custom aircraft or technical collaboration, I'd love to hear the mission and the constraints before talking hardware.</p></div><a class="button button-main" href="../contact/?topic=project">Request a consult or quote ↗</a></div></div></section>
+</main>
+<footer><div class="container footer-inner"><span>© <span data-year>2026</span> Built By Cal / Calvin Miller</span><span>Build · Fly · Learn · Repeat</span></div></footer>
+<script src="../site-config.js"></script><script src="../site.js"></script>
+</body></html>
