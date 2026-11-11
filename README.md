@@ -12,12 +12,12 @@ Publish this repository from the `main` branch and `/(root)` via **Settings → 
 
 ## Professional email
 
-`site-config.js` intentionally leaves `email` empty until the `calvin@builtbycal.com` mailbox has been purchased (if needed), activated, and successfully tested. Once verified, set `email: 'calvin@builtbycal.com'` and commit/push that one change. Do not put passwords or mail-provider tokens in this file.
+The public contact address is configured as `calvin@builtbycal.com` in `site-config.js`. Mailbox administration stays with the email provider.
 
-## Portfolio integrity
+## Projects
 
-Case studies describe independent projects or validated implementation history. The Watchtower project links to the actual public `calvinmill22/osint` repository. RoadBoxOS's independent origins are distinguished from workplace AtomicOS adaptations. No employer proprietary code, inventory records, home-system credentials, or user data is included.
+The portfolio includes RoadBoxOS / AtomicOS, Artemis, CalFlix, Watchtower, and Pantry Tracker. The recruiter portal at `employers/` includes focused resumes, a complete career history and text downloads. Watchtower links to its own public source repository.
 
-## Security
+## Deployment model
 
-The site is public by design. No private authentication, backend services, exposed home ports, API keys, or technical staging/production interfaces are necessary.
+The site is static and hosted on GitHub Pages. CalFlix service reports are published as read-only JSON files by the private automation bridge.
