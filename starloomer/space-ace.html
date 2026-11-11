@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Starloomer // Space Ace v0.2 | Browser Pilot Preview</title>
+<script src="space-ace-offline-core.js"></script>
+</head>
+<body>
+<div id="ace-app">
+<div role="note" style="max-width:1380px;margin:auto auto 12px;padding:10px 13px;background:#17303a;border:1px solid #4c7a79;border-radius:8px;color:#c1e7e3;font:12px/1.6 Consolas,monospace">ORIGINAL SPACE ACE v0.2 GAMEPLAY // Browser-only pilot records (saved on this device). NOT connected to the shared Starloomer CORE. <a href="./" style="color:#7fe0d1">← Starloomer Games</a></div>
+<style>
+:root{color-scheme:dark}body{margin:0;background:#06090b}#ace-app{--bg:#06090b;--panel:#0f171a;--panel2:#142025;--text:#e7efef;--muted:#84a0a5;--line:#2b4c52;--accent:#7fe0d1;--accent2:#56ad9e;--warn:#efcd75;--bad:#e18080;font-family:Consolas,"Courier New",monospace;min-height:100vh;color:var(--text);padding:16px;box-sizing:border-box;background:linear-gradient(rgba(127,224,209,.02) 1px,transparent 1px),linear-gradient(90deg,rgba(127,224,209,.016) 1px,transparent 1px),var(--bg);background-size:28px 28px}#ace-app *{box-sizing:border-box}.wrap{max-width:1380px;margin:auto}.eyebrow{color:var(--accent);letter-spacing:.13em;font-size:12px;text-transform:uppercase}h1{font-size:clamp(28px,4vw,44px);margin:5px 0}.sub{color:var(--muted);margin-bottom:14px}.grid{display:grid;grid-template-columns:280px 1fr 290px;gap:12px;align-items:start}.panel{border:1px solid var(--line);background:rgba(15,23,26,.96);border-radius:10px;padding:14px}.panel h2{color:var(--accent);font-size:14px;margin:0 0 11px}.load{display:flex;gap:7px}.load input{min-width:0;flex:1;background:var(--panel2);border:1px solid var(--line);border-radius:5px;padding:10px;color:var(--text);font:inherit}.load button,.mainbtn{background:var(--accent);color:#06110f;border:0;border-radius:6px;padding:10px;font:inherit;font-weight:700;cursor:pointer}.mainbtn{width:100%;min-height:48px;margin-top:10px}.mainbtn[disabled]{opacity:.4;cursor:not-allowed}.stats{display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:9px}.stat{background:var(--panel2);border:1px solid #233a3f;border-radius:6px;padding:8px}.k{display:block;color:var(--muted);font-size:9px}.v{display:block;font-size:17px;margin-top:3px}.chips{display:flex;flex-wrap:wrap;gap:5px;margin-top:8px}.chip{border:1px solid #31575a;border-radius:99px;padding:5px 7px;font-size:10px}.small{font-size:10px;color:var(--muted)}.notice{color:var(--warn);font-size:11px;min-height:15px;margin-top:7px}.game-panel{padding:9px}.hud{display:grid;grid-template-columns:repeat(5,1fr);gap:6px;margin-bottom:7px}.hudbox{border:1px solid #29464b;background:#0b1215;border-radius:6px;padding:6px;text-align:center}.hudbox .k{font-size:8px}.hudbox .v{font-size:16px}.canvas-wrap{position:relative;width:100%;aspect-ratio:3/2;max-height:70vh;background:#020506;border:1px solid #315058;border-radius:8px;overflow:hidden;touch-action:none}canvas{width:100%;height:100%;display:block}.overlay{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:rgba(2,5,6,.7);padding:20px;text-align:center}.overlay.hidden{display:none}.card{max-width:520px;border:1px solid #3d696d;background:rgba(9,16,18,.96);border-radius:9px;padding:18px}.card h3{margin:0 0 8px;font-size:24px}.card p{color:#c2d4d6;line-height:1.4}.legend{display:grid;grid-template-columns:repeat(2,1fr);gap:6px;margin-top:10px}.legend .item{border:1px solid #243c41;border-radius:5px;padding:6px;font-size:10px}.swatch{display:inline-block;width:9px;height:9px;border-radius:2px;margin-right:5px}.events{max-height:420px;overflow:auto}.event{padding:8px 0;border-bottom:1px solid #20363b;font-size:11px;line-height:1.4}.record{font-size:12px;margin-bottom:8px}.record strong{color:var(--warn)}.result{white-space:pre-wrap;background:#070c0e;border:1px solid #29464b;border-radius:6px;padding:10px;min-height:120px;font-size:11px;line-height:1.45}@media(max-width:1050px){.grid{grid-template-columns:1fr 1fr}.game-panel{grid-column:1/-1;grid-row:1}.left{grid-row:2}.right{grid-row:2}.canvas-wrap{max-height:none}}@media(max-width:700px){#ace-app{padding:9px}.grid{grid-template-columns:1fr}.game-panel,.left,.right{grid-column:auto;grid-row:auto}.hud{grid-template-columns:repeat(3,1fr)}.legend{grid-template-columns:1fr}.load{flex-direction:column}}
+</style>
+<div class="wrap">
+<div class="eyebrow">Carrier Channel 116 Flight Operations</div>
+<h1>STARLOOMER // SPACE ACE</h1>
+<div class="sub">High-speed debris recovery with defensive fire conducted under a generous interpretation of safe docking practice.</div>
+<div class="grid">
+<section class="panel left">
+<h2>CREW TERMINAL</h2>
+<form id="crew-form" class="load"><input id="callsign" maxlength="32" value="Guest_Pilot"><button>LOAD</button></form>
+<div id="crew-name" class="eyebrow" style="margin-top:10px">NO CREW FILE</div>
+<div id="level-line">Level —</div>
+<div class="stats"><div class="stat"><span class="k">TECH</span><span id="tech" class="v">—</span></div><div class="stat"><span class="k">COMBAT</span><span id="combat" class="v">—</span></div><div class="stat"><span class="k">SCIENCE</span><span id="science" class="v">—</span></div><div class="stat"><span class="k">LUCK</span><span id="luck" class="v">—</span></div></div>
+<div id="resources" class="chips"></div>
+<div id="assists" class="small" style="margin-top:10px">Flight assists load when a run begins.</div>
+<button id="start" class="mainbtn" disabled>BEGIN SPACE ACE RUN</button>
+<div id="notice" class="notice"></div>
+</section>
+
+<section class="panel game-panel">
+<div class="hud"><div class="hudbox"><span class="k">TIME</span><span id="time" class="v">75</span></div><div class="hudbox"><span class="k">SHIELDS</span><span id="shields" class="v">███</span></div><div class="hudbox"><span class="k">SCORE</span><span id="score" class="v">0</span></div><div class="hudbox"><span class="k">CHAIN</span><span id="combo" class="v">×1</span></div><div class="hudbox"><span class="k">PICKUPS</span><span id="pickups" class="v">0</span></div></div>
+<div id="canvas-wrap" class="canvas-wrap"><canvas id="game" width="900" height="600"></canvas><div id="overlay" class="overlay"><div class="card"><div class="eyebrow">FLIGHT DECK READY</div><h3>SPACE ACE</h3><p>Move with WASD / arrows, mouse, or touch. Left-click or press SPACE to fire. Large asteroids split into smaller rocks. Collect cargo and rare shield recharges.</p><div class="legend"><div class="item"><span class="swatch" style="background:#9aa5a8"></span>SCRAP</div><div class="item"><span class="swatch" style="background:#71b8ff"></span>ELECTRONICS</div><div class="item"><span class="swatch" style="background:#d783ff"></span>WEIRD JUNK</div><div class="item"><span class="swatch" style="background:#efc75d"></span>CARGO / CREDITS</div><div class="item"><span class="swatch" style="background:#65e0d1"></span>SIGNAL DATA</div><div class="item"><span class="swatch" style="background:#665d5a"></span>ASTEROID // SHOOT OR DODGE</div><div class="item"><span class="swatch" style="background:#73ff9a"></span>SHIELD RECHARGE // +1 SHIELD</div></div></div></div></div>
+</section>
+
+<section class="panel right">
+<h2>ARCADE RECORD</h2>
+<div id="record" class="record">No pilot loaded.</div>
+<h2>LAST RUN</h2><div id="result" class="result">Flight controller standing by.</div>
+<h2 style="margin-top:14px">RECENT STATION ACTIVITY</h2><div id="events" class="events"></div>
+</section>
+</div></div>
+<script>
+(()=>{
+const $=q=>document.querySelector(q),canvas=$('#game'),ctx=canvas.getContext('2d'),wrap=$('#canvas-wrap');
+let crew=null,callsign='',run=null,running=false,last=0,startAt=0,timeLeft=75,score=0,combo=1,maxCombo=1,shields=3,maxShields=3,hits=0,collected=0,objects=[],bullets=[],keys={},spawnClock=0,fireCooldown=0,asteroidsDestroyed=0,shieldPickups=0,assists={magnet_radius:8,extra_shields:0,sensor_range:110,rare_bonus:0};
+let loot={scrap:0,electronics:0,weird_junk:0,signal_data:0,cargo_credits:0};
+const ship={x:450,y:520,w:58,h:34,speed:350,targetX:null,targetY:null,flash:0,shieldFlash:0};
+function esc(v){const d=document.createElement('div');d.textContent=String(v??'');return d.innerHTML}
+async function api(path,opts={}){const r=await fetch(path,{headers:{'Content-Type':'application/json'},...opts});let d={};try{d=await r.json()}catch{}if(!r.ok)throw new Error(d.detail||`HTTP ${r.status}`);return d}
+function statText(data,key){const b=data.crew[key],e=data.effective_stats[key];return e!==b?`${e} (${b}+${e-b})`:String(b)}
+function renderCrew(d){crew=d.crew;callsign=crew.callsign;$('#crew-name').textContent='CREW FILE // '+callsign.toUpperCase();$('#level-line').textContent=`Level ${crew.level} // ${crew.credits} Carrier Credits`;['tech','combat','science','luck'].forEach(k=>$('#'+k).textContent=statText(d,k));const r=d.resources||{};$('#resources').innerHTML=`<span class="chip">SCRAP ${r.scrap||0}</span><span class="chip">ELECTRONICS ${r.electronics||0}</span><span class="chip">WEIRD ${r.weird_junk||0}</span><span class="chip">SIGNAL ${r.signal_data||0}</span>`;const s=d.space_ace_stats||{};$('#record').innerHTML=`RUNS ${s.runs||0}<br>BEST SCORE <strong>${Number(s.best_score||0).toLocaleString()}</strong><br>BEST CHAIN <strong>×${s.best_combo||0}</strong><br>SURVIVALS ${s.survivals||0}`;$('#start').disabled=running}
+function resetRun(){score=0;combo=1;maxCombo=1;hits=0;collected=0;asteroidsDestroyed=0;shieldPickups=0;loot={scrap:0,electronics:0,weird_junk:0,signal_data:0,cargo_credits:0};objects=[];bullets=[];spawnClock=0;fireCooldown=0;ship.x=450;ship.y=520;ship.targetX=null;ship.targetY=null;ship.flash=0;ship.shieldFlash=0;maxShields=3+(assists.extra_shields||0);shields=maxShields;timeLeft=run?.run_seconds||75;updateHud()}
+function updateHud(){$('#time').textContent=Math.max(0,Math.ceil(timeLeft));$('#score').textContent=Math.floor(score).toLocaleString();$('#combo').textContent='×'+combo;$('#pickups').textContent=collected;$('#shields').textContent='█'.repeat(Math.max(0,shields))+'░'.repeat(Math.max(0,maxShields-shields))}
+function seeded(seed){let x=seed%2147483647;if(x<=0)x+=2147483646;return()=>{x=x*16807%2147483647;return(x-1)/2147483646}}
+let rng=Math.random;
+const TYPES={scrap:{color:'#9aa5a8',points:100},electronics:{color:'#71b8ff',points:180},weird_junk:{color:'#d783ff',points:300},signal_data:{color:'#65e0d1',points:260},cargo:{color:'#efc75d',points:220},mystery:{color:'#ffffff',points:350},shield:{color:'#73ff9a',points:450},asteroid:{color:'#665d5a',points:0}};
+function chooseType(){
+  // Shield refills are intentionally rare, but become more likely when damaged.
+  const shieldChance=(shields<maxShields?0.014:0.002)+Math.min(.008,(assists.rare_bonus||0)*.08);
+  if(rng()<shieldChance)return'shield';
+  const rare=Math.min(.16,.04+(assists.rare_bonus||0));
+  const x=rng();
+  if(x<.46)return'asteroid';if(x<.67)return'scrap';if(x<.80)return'electronics';if(x<.88)return'cargo';if(x<.94)return'weird_junk';if(x<.98+rare/2)return'signal_data';return'mystery'
+}
+function asteroidSize(tier){return tier===3?52:tier===2?34:20}
+function spawn(){
+  const type=chooseType(),danger=type==='asteroid';
+  let tier=null,size;
+  if(danger){tier=rng()<.78?3:2;size=asteroidSize(tier)*(0.90+rng()*.18)}else size=18+rng()*12;
+  const speed=(danger?125:100)+(75-timeLeft)*1.45+rng()*75;
+  objects.push({type,x:25+rng()*(canvas.width-50),y:-40,size,tier,speed,vx:0,spin:(rng()-.5)*5,rot:rng()*6,id:rng()})
+}
+function fire(){
+  if(!running||fireCooldown>0)return;
+  bullets.push({x:ship.x-13,y:ship.y-24,vy:-610});
+  bullets.push({x:ship.x+13,y:ship.y-24,vy:-610});
+  fireCooldown=.19;
+}
+function hitCircleRect(o){const cx=Math.max(ship.x-ship.w/2,Math.min(o.x,ship.x+ship.w/2)),cy=Math.max(ship.y-ship.h/2,Math.min(o.y,ship.y+ship.h/2));const dx=o.x-cx,dy=o.y-cy;return dx*dx+dy*dy<(o.size*.55)*(o.size*.55)}
+function bulletHitsAsteroid(b,o){const dx=b.x-o.x,dy=b.y-o.y,r=o.size*.55;return dx*dx+dy*dy<r*r}
+function splitAsteroid(o){
+  const tier=o.tier||1;
+  asteroidsDestroyed++;
+  score += tier===3?110:tier===2?165:240;
+  if(tier<=1)return;
+  const next=tier-1;
+  for(let i=0;i<2;i++){
+    const dir=i===0?-1:1;
+    objects.push({type:'asteroid',x:o.x+dir*o.size*.18,y:o.y,size:asteroidSize(next)*(0.90+rng()*.15),tier:next,speed:o.speed*(1.10+rng()*.12),vx:dir*(65+rng()*65),spin:(rng()-.5)*8,rot:rng()*6,id:rng()});
+  }
+}
+function collect(o){
+  collected++;combo=Math.min(12,combo+1);maxCombo=Math.max(maxCombo,combo);
+  if(o.type==='shield'){
+    const gained=shields<maxShields;
+    if(gained){shields++;shieldPickups++;ship.shieldFlash=.55}
+    score+=TYPES.shield.points*Math.max(1,combo);
+    return;
+  }
+  let type=o.type;
+  if(type==='mystery'){const roll=rng();type=roll<.38?'electronics':roll<.68?'weird_junk':roll<.86?'signal_data':'cargo'}
+  const mult=Math.max(1,combo);score+=TYPES[o.type].points*mult;
+  if(type==='scrap')loot.scrap+=1+(combo>=6?1:0);if(type==='electronics')loot.electronics+=1;if(type==='weird_junk')loot.weird_junk+=1;if(type==='signal_data')loot.signal_data+=1;if(type==='cargo')loot.cargo_credits+=5+Math.min(20,combo*2)
+}
+function collideAsteroid(){if(ship.flash>0)return;hits++;shields--;combo=1;ship.flash=.7;if(shields<=0)endRun(false)}
+function update(dt){
+  if(!running)return;
+  timeLeft=Math.max(0,timeLeft-dt);ship.flash=Math.max(0,ship.flash-dt);ship.shieldFlash=Math.max(0,ship.shieldFlash-dt);fireCooldown=Math.max(0,fireCooldown-dt);
+  if(keys[' ']&&fireCooldown<=0)fire();
+  let dx=(keys.ArrowRight||keys.d?1:0)-(keys.ArrowLeft||keys.a?1:0),dy=(keys.ArrowDown||keys.s?1:0)-(keys.ArrowUp||keys.w?1:0);
+  if(dx||dy){const n=Math.hypot(dx,dy)||1;ship.x+=dx/n*ship.speed*dt;ship.y+=dy/n*ship.speed*dt;ship.targetX=null;ship.targetY=null}else if(ship.targetX!=null){ship.x+=(ship.targetX-ship.x)*Math.min(1,dt*7);ship.y+=(ship.targetY-ship.y)*Math.min(1,dt*7)}
+  ship.x=Math.max(ship.w/2,Math.min(canvas.width-ship.w/2,ship.x));ship.y=Math.max(canvas.height*.58,Math.min(canvas.height-ship.h/2-7,ship.y));
+  spawnClock-=dt;const rate=Math.max(.16,.48-((75-timeLeft)/75)*.24);if(spawnClock<=0){spawn();if(timeLeft<42&&rng()<.24)spawn();spawnClock=rate*(.72+rng()*.6)}
+  for(const b of bullets)b.y+=b.vy*dt;
+  bullets=bullets.filter(b=>b.y>-30);
+  for(const o of objects){o.y+=o.speed*dt;o.x+=(o.vx||0)*dt;o.rot+=o.spin*dt;if(o.type==='asteroid'&&o.vx){if(o.x<o.size*.3&&o.vx<0)o.vx*=-1;if(o.x>canvas.width-o.size*.3&&o.vx>0)o.vx*=-1}if(o.type!=='asteroid'&&assists.magnet_radius>8){const dist=Math.hypot(o.x-ship.x,o.y-ship.y);if(dist<65+assists.magnet_radius){o.x+=(ship.x-o.x)*dt*1.8;o.y+=(ship.y-o.y)*dt*.55}}}
+  // Lasers only interact with asteroids; they never accidentally vaporize salvage.
+  for(let bi=bullets.length-1;bi>=0;bi--){const b=bullets[bi];let hit=false;for(let oi=objects.length-1;oi>=0;oi--){const o=objects[oi];if(o.type==='asteroid'&&bulletHitsAsteroid(b,o)){objects.splice(oi,1);bullets.splice(bi,1);splitAsteroid(o);hit=true;break}}if(hit)continue}
+  for(let i=objects.length-1;i>=0;i--){const o=objects[i];if(hitCircleRect(o)){if(o.type==='asteroid')collideAsteroid();else collect(o);objects.splice(i,1);continue}if(o.y>canvas.height+60||o.x<-100||o.x>canvas.width+100)objects.splice(i,1)}
+  score+=dt*8*combo;if(timeLeft<=0)endRun(true);updateHud()
+}
+function starfield(){ctx.fillStyle='#020506';ctx.fillRect(0,0,canvas.width,canvas.height);ctx.fillStyle='rgba(180,220,220,.36)';for(let i=0;i<70;i++){const x=(i*137+performance.now()*.015*(1+i%3))%canvas.width,y=(i*79+performance.now()*.035*(1+i%4))%canvas.height;ctx.fillRect(x,y,(i%4===0?2:1),(i%4===0?2:1))}}
+function drawShip(){ctx.save();ctx.translate(ship.x,ship.y);if(ship.flash>0&&Math.floor(ship.flash*16)%2===0)ctx.globalAlpha=.28;if(ship.shieldFlash>0){ctx.strokeStyle=`rgba(115,255,154,${Math.min(1,ship.shieldFlash*1.8)})`;ctx.lineWidth=4;ctx.beginPath();ctx.arc(0,0,39,0,Math.PI*2);ctx.stroke()}ctx.fillStyle='#a8c7c2';ctx.strokeStyle='#7fe0d1';ctx.lineWidth=2;ctx.beginPath();ctx.moveTo(0,-22);ctx.lineTo(31,17);ctx.lineTo(12,12);ctx.lineTo(0,20);ctx.lineTo(-12,12);ctx.lineTo(-31,17);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle='#17262a';ctx.beginPath();ctx.moveTo(0,-12);ctx.lineTo(10,5);ctx.lineTo(-10,5);ctx.closePath();ctx.fill();ctx.fillStyle='#6bb8ff';ctx.fillRect(-18,15,8,8);ctx.fillRect(10,15,8,8);ctx.restore()}
+function drawBullet(b){ctx.save();ctx.strokeStyle='#ffef93';ctx.lineWidth=3;ctx.shadowColor='#ffef93';ctx.shadowBlur=7;ctx.beginPath();ctx.moveTo(b.x,b.y+9);ctx.lineTo(b.x,b.y-9);ctx.stroke();ctx.restore()}
+function drawObject(o){ctx.save();ctx.translate(o.x,o.y);ctx.rotate(o.rot);if(o.type==='asteroid'){ctx.fillStyle=TYPES[o.type].color;ctx.strokeStyle=o.tier===3?'#a89a92':o.tier===2?'#91857f':'#786f6b';ctx.lineWidth=o.tier===3?2:1.4;ctx.beginPath();for(let i=0;i<9;i++){const a=i*Math.PI*2/9,r=o.size*(.42+rngStatic(o.id+i)*.18),x=Math.cos(a)*r,y=Math.sin(a)*r;i?ctx.lineTo(x,y):ctx.moveTo(x,y)}ctx.closePath();ctx.fill();ctx.stroke()}else if(o.type==='shield'){ctx.rotate(-o.rot);ctx.strokeStyle=TYPES.shield.color;ctx.fillStyle='rgba(115,255,154,.12)';ctx.lineWidth=3;ctx.beginPath();ctx.moveTo(0,-o.size*.55);ctx.lineTo(o.size*.5,-o.size*.25);ctx.lineTo(o.size*.4,o.size*.35);ctx.lineTo(0,o.size*.62);ctx.lineTo(-o.size*.4,o.size*.35);ctx.lineTo(-o.size*.5,-o.size*.25);ctx.closePath();ctx.fill();ctx.stroke();ctx.fillStyle=TYPES.shield.color;ctx.fillRect(-2,-o.size*.25,4,o.size*.5);ctx.fillRect(-o.size*.25,-2,o.size*.5,4)}else{const c=TYPES[o.type].color;ctx.fillStyle='#11191c';ctx.strokeStyle=c;ctx.lineWidth=3;ctx.fillRect(-o.size/2,-o.size/2,o.size,o.size);ctx.strokeRect(-o.size/2,-o.size/2,o.size,o.size);ctx.fillStyle=c;ctx.font='bold 12px Consolas';ctx.textAlign='center';ctx.textBaseline='middle';const label={scrap:'S',electronics:'E',weird_junk:'W',signal_data:'D',cargo:'$',mystery:'?'}[o.type];ctx.fillText(label,0,1)}ctx.restore()}
+function rngStatic(v){return Math.abs(Math.sin(v*9999.13))%1}
+function draw(){starfield();for(const o of objects)drawObject(o);for(const b of bullets)drawBullet(b);drawShip();if(running){ctx.fillStyle='rgba(127,224,209,.12)';ctx.fillRect(0,canvas.height*.57,canvas.width,1)}}
+function loop(ts){const dt=Math.min(.035,(ts-last)/1000||0);last=ts;update(dt);draw();requestAnimationFrame(loop)}
+async function startRun(){if(!crew||running)return;$('#notice').textContent='Requesting debris recovery clearance...';try{run=await api('/api/run/start',{method:'POST',body:JSON.stringify({callsign})});assists=run.assists||assists;rng=seeded(run.seed);resetRun();running=true;startAt=performance.now();$('#overlay').classList.add('hidden');$('#start').disabled=true;$('#assists').textContent=`FLIGHT ASSISTS // Magnet ${assists.magnet_radius}px // Shields ${3+assists.extra_shields} // Sensor ${assists.sensor_range}px // Rare +${Math.round(assists.rare_bonus*100)}%`;$('#result').textContent='RUN ACTIVE // Left-click or SPACE to fire. Large rocks split. Salvage first, explain later.';$('#notice').textContent='Flight clearance granted.'}catch(e){$('#notice').textContent=e.message}}
+async function endRun(survived){if(!running)return;running=false;const elapsed=Math.min(run.run_seconds,(performance.now()-startAt)/1000);$('#overlay').classList.remove('hidden');$('#overlay').innerHTML=`<div class="card"><div class="eyebrow">RUN COMPLETE</div><h3>${survived?'EXTRACTION WINDOW CLEARED':'SHIP FORCED TO ABORT'}</h3><p>Banking cargo to your local pilot record...</p></div>`;try{const payload={callsign,run_token:run.run_token,score:Math.floor(score),max_combo:maxCombo,elapsed_seconds:Math.max(2,elapsed),hits,scrap:loot.scrap,electronics:loot.electronics,weird_junk:loot.weird_junk,signal_data:loot.signal_data,cargo_credits:loot.cargo_credits,collected_count:collected,survived};const d=await api('/api/run/finish',{method:'POST',body:JSON.stringify(payload)});renderCrew(d);const b=d.banked;$('#result').textContent=`SPACE ACE // ${callsign.toUpperCase()}\nScore: ${Math.floor(score).toLocaleString()}\nMax Chain: ×${maxCombo}\nAsteroids Destroyed: ${asteroidsDestroyed}\nShield Recharges: ${shieldPickups}\nHits: ${hits}\n\nBANKED TO THIS BROWSER\n+${b.xp} XP // +${b.credits} Carrier Credits\n${b.scrap} Scrap // ${b.electronics} Electronics // ${b.weird_junk} Weird Junk // ${b.signal_data} Signal Data${d.level_up?'\n\nLEVEL UP':''}${d.stat_points_earned?'\nPERSONNEL DEVELOPMENT +'+d.stat_points_earned+' STAT POINT':''}`;$('#overlay').innerHTML=`<div class="card"><div class="eyebrow">LOCAL CARGO BANKED</div><h3>${Math.floor(score).toLocaleString()} POINTS</h3><p>Asteroids destroyed: ${asteroidsDestroyed} // Shield recharges: ${shieldPickups}<br>${b.scrap} Scrap // ${b.electronics} Electronics // ${b.weird_junk} Weird Junk // ${b.signal_data} Signal Data<br>+${b.credits} Carrier Credits // +${b.xp} XP</p><button id="again" class="mainbtn">FLY AGAIN</button></div>`;$('#again').addEventListener('click',()=>{$('#overlay').classList.add('hidden');startRun()});await loadEvents();$('#notice').textContent='Recovered cargo saved to this browser's pilot record (not shared CORE).'}catch(e){$('#notice').textContent='BANKING ERROR: '+e.message;$('#overlay').innerHTML=`<div class="card"><h3>ACCOUNTING FAILURE</h3><p>${esc(e.message)}</p></div>`}finally{$('#start').disabled=false}}
+function pointer(e){const r=canvas.getBoundingClientRect(),sx=canvas.width/r.width,sy=canvas.height/r.height;const p=e.touches?e.touches[0]:e;ship.targetX=(p.clientX-r.left)*sx;ship.targetY=(p.clientY-r.top)*sy;e.preventDefault()}
+window.addEventListener('keydown',e=>{keys[e.key]=true;if(e.key===' '&&running)fire();if(['ArrowUp','ArrowDown','ArrowLeft','ArrowRight',' '].includes(e.key))e.preventDefault()});window.addEventListener('keyup',e=>keys[e.key]=false);
+wrap.addEventListener('mousemove',e=>{if(running)pointer(e)});
+wrap.addEventListener('mousedown',e=>{if(running){pointer(e);if(e.button===0)fire()}else pointer(e)});
+wrap.addEventListener('contextmenu',e=>e.preventDefault());
+wrap.addEventListener('touchstart',pointer,{passive:false});wrap.addEventListener('touchmove',pointer,{passive:false});
+async function loadCrew(name){const d=await api('/api/crew',{method:'POST',body:JSON.stringify({callsign:name})});renderCrew(d)}async function loadEvents(){try{const d=await api('/api/events?limit=12');$('#events').innerHTML=d.events.map(e=>`<div class="event">${esc(e.summary)}<div class="small">EVENT ${e.id} // ${esc(e.event_type.toUpperCase())}</div></div>`).join('')}catch{}}
+$('#crew-form').addEventListener('submit',async e=>{e.preventDefault();try{await loadCrew($('#callsign').value.trim());await loadEvents();$('#start').disabled=false;$('#notice').textContent='Pilot file loaded.'}catch(err){$('#notice').textContent=err.message}});$('#start').addEventListener('click',startRun);loadEvents();requestAnimationFrame(loop)
+})();
+</script>
+</div>
+</body></html>
