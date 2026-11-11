@@ -85,8 +85,8 @@
   const d=draft();if(!d)return;
   const url='https://mail.google.com/mail/?view=cm&fs=1&to='+encodeURIComponent(target)+'&su='+encodeURIComponent(d.subject)+'&body='+encodeURIComponent(d.body);
   status.textContent='Opening Gmail. Review your message and press Send there.';
-  const tab=window.open(url,'_blank','noopener,noreferrer');
-  if(!tab)status.textContent='If Gmail did not open, check your popup blocker or use the email-app button.';
+  const tab=window.open(url,'_blank');
+  if(tab){try{tab.opener=null;}catch(_){}}else status.textContent='If Gmail did not open, check your popup blocker or use the email-app button.';
  });
  field('copy-button').addEventListener('click',async function(){
   const d=draft();if(!d)return;
