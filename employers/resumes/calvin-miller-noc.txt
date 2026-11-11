@@ -1,0 +1,25 @@
+CALVIN MILLER
+NETWORK OPERATIONS CENTER TECHNICIAN | LINUX & INFRASTRUCTURE SUPPORT
+Harrisburg area, PA | calvin@builtbycal.com | https://builtbycal.com | https://github.com/calvinmill22
+
+PROFESSIONAL PROFILE
+Hands-on Linux and infrastructure support practitioner deploying and maintaining servers, virtual machines, networked applications and remote-access services. Uses SSH, systemd, service-status checks, logs and utilization data to troubleshoot. Background in incident triage, user support, process documentation and cross-team escalation.
+
+SKILLS
+Systems: Ubuntu Server; Linux Mint; Proxmox VE; Windows; Raspberry Pi; SSH; systemd.
+Networking: LAN/Wi-Fi; IP subnets; DHCP; local access points; mDNS; Tailscale VPN; MagicDNS.
+Diagnostics: uptime and service checks; CPU/RAM/disk/GPU monitoring; Linux logs; shell; Python; SQLite/SQL.
+Operations: incident triage; user onboarding; documentation; process improvement.
+
+PROJECTS
+Artemis (2026): Proxmox + Ubuntu VM, NVIDIA RTX 3060 passthrough, drivers, Ollama; diagnosed startup/reboot issues, systemd voice services, performance and uptime.
+AtomicOS (2026): Workplace Raspberry Pi/FastAPI/SQLite inventory service with dedicated Wi-Fi AP, DHCP subnet, systemd, authenticated scanner workflows and transaction support.
+CalFlix (2026): Linux Mint/Jellyfin/Tailscale service; external storage, account provisioning and remote troubleshooting for 10+ users.
+
+PROFESSIONAL EXPERIENCE
+ATOMIC Design — Road Support Coordinator, 2026-present: Coordinate seven technician tool kits and approx. $250,000 serialized asset scope; investigate discrepancies, support operations and purchasing; identified/recovered approx. $42,000 in tools/return value in first eight months.
+ATOMIC Design — Scenic Technician / Project Integration, 2018-2026: Troubleshot multi-team technical installations, coordinating shop and field work.
+Additional: 3D Makers Warehouse Co-Founder, 2020-present; Cirque du Soleil Assistant Head Carpenter/Head Special FX, 2022-2023; Mojo Barriers North America Lead U.S. Technician, 2014-2017.
+
+EDUCATION
+Central York High School, Diploma, 2012. Penn State York, undergraduate general-education coursework (no degree).
