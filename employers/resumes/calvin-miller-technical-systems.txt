@@ -12,6 +12,7 @@ PROJECTS
 RoadBoxOS/Inventory MVP, independent 2025-present: Inventory families and serialized assets, kits, show deployment, scanning, checkouts/returns, replenishment/billing, PDF exports and bug reporting; iterations through v0.23.4.
 AtomicOS, workplace 2026: FastAPI, Uvicorn, SQLite WAL, SQLAlchemy, JWT, Wi-Fi AP/DHCP, Raspberry Pi/systemd, scanner integration, authentication, inventory and activity logs.
 Artemis, independent 2026: Proxmox/Ubuntu VM, GPU passthrough/RTX 3060/NVIDIA/CUDA, Ollama Qwen3 8B, service management, hardware/uptime investigation, voice and lighting prototypes.
+Starloomer Mini Games CORE, independent 2026: Four interconnected Python/FastAPI and SQLite WAL game prototypes with crew XP/equipment, shared resources and station metrics. Junk Run combines choice-based salvage with live-broadcast station repair projects; Engineering Panic uses 2–4-player distributed technical-jargon console puzzles; Signal Sweep reveals mission locations; Space Ace is a real-time JavaScript Canvas arcade. Browser-adapted previews published; original persistent backend remains private.
 CalFlix, independent 2026: Linux Mint/Jellyfin/Tailscale, storage management, remote access and support for 10+ users.
 Pantry Tracker: Household inventory prototype and workflow demonstration.
 
