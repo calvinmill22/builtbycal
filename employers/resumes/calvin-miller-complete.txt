@@ -19,22 +19,25 @@ RoadBoxOS / Inventory MVP (independent, begun October 2025): Serialized tools, k
 AtomicOS Quartermaster (workplace implementation, 2026): FastAPI/Uvicorn/SQLAlchemy/SQLite WAL, JWT, Pi-hosted Linux, DHCP Wi-Fi access point, systemd, scanner and workflows.
 Artemis (independent, 2026): Proxmox VE, Ubuntu VM, GPU passthrough, Ollama/Qwen3:8b, voice and local knowledge, hardware health and service diagnosis.
 CalFlix (independent, 2026): Private Jellyfin on Linux Mint, Tailscale remote access, external storage, 10+ users.
-Watchtower (independent prototype): ADS-B/aircraft data acquisition and local API integration exploration; planned notification/commute features.
-Pantry Tracker (independent prototype): Household inventory application.
+Watchtower (independent prototype): ADS-B aircraft receiver/collector, SQLite events and local map/API with Artemis integration planned.
+Pantry Tracker (independent prototype): Demonstrated household inventory application; interest from an experienced software engineer.
 
-WORK HISTORY
-ATOMIC Design — Road Support Coordinator, 2026-present. Seven road-tech kits, approx. $250k serialized asset scope; about $17k tools and $25k merchandise return value identified/recovered in first eight months; process design, reconciliation, reporting, purchasing support.
-3D Makers Warehouse — Co-Founder, 2020-present. 3D printing, prototyping and repeatable fabrication workflows.
-ATOMIC Design / IATSE Local 97 — Scenic Technician / Project Integration, 2018-2026. Technical field/shop integrations, installation, troubleshooting, coordination.
-Cirque du Soleil — Assistant Head Carpenter / Head Special FX, 2022-2023. Crew coordination, technical show operations and troubleshooting.
-Filmwerks — Technical production engagements, 2022.
-Mojo Barriers North America — Lead U.S. Technician, 2014-2017. Equipment and on-site field execution.
-Additional earlier roles and engagements: OTC Fleet Service (approx. 2013-2014); The Apartments at Waterford; Production Express; A Charlie Brown Christmas production.
+CAREER HISTORY — REVERSE CHRONOLOGICAL
+- ATOMIC Design — Road Support Coordinator | Lititz, PA | 2026-present: Seven road-technician kits and roughly $250,000 in serialized equipment; readiness, replenishment, traceability and reconciliation. Built tracking and purchasing-support processes; identified/recovered about $17,000 in tools and $25,000 in merchandise-return value in the first eight months.
+- 3D Makers Warehouse — Co-Founder | 2020-present: Custom parts and functional 3D-printed prototypes; customer specifications, materials selection, printer tuning and repeatable manufacturing workflows.
+- Cirque du Soleil — Assistant Head Carpenter / Head Special FX | 2022-2023: Crew coordination, technical show operation, special effects and time-critical production troubleshooting.
+- Filmwerks International — Master Scenic Carpenter | Wilmington, NC | 2022: Led scenic fabrication and installation for Fox's FIFA World Cup Qatar broadcast booth; interpreted drawings, planned labor/materials and solved field engineering problems.
+- ATOMIC Design / IATSE Local 97 — Scenic Technician / Project Integration | 2018-2026: Scenic and technical installations, multi-team shop-to-field coordination, equipment troubleshooting and show-deadline delivery.
+- A Charlie Brown Christmas — Touring Propmaster / Logistician | U.S. tour | 2018: Props, packing systems, load plans, inventory accountability, repairs and venue setups through a nine-week, frequently one-city-per-day tour. The logistics were serious. The stories? Inquire within.
+- Mojo Barriers North America / Spot Rental — Lead U.S. Technician / Road Technician | 2014-2017: Field crew coordination, live-event barrier systems, installation, readiness and rapid on-site problem solving.
+- The Apartments at Waterford — Head Groundskeeper / Renovation Inspector | Earlier career: Advanced into team leadership and renovation inspections across an approximately 100-acre, 1,000-unit property; contractor/material coordination and distributed maintenance inventory hubs.
+- OTC Fleet Service — Shop Helper / Technician | approximately 2013-2014: Progressed from shop support to diesel and gasoline fleet service; learned welding; built a parts and consumables tracking system used for years.
+- Production Express — Production Technician | 2012-2013: Production equipment preparation, staging, loading, installation, show operations and warehouse logistics.
 
 EDUCATION
-Central York High School, diploma 2012. Penn State York general education coursework (no degree). Self-directed development in software, Linux/networking, AI, fabrication, hardware integration. No unverified formal certifications listed.
+Central York High School, diploma 2012. Penn State York general-education coursework. Self-directed development in software, Linux/networking, AI, fabrication and hardware integration.
 
 OPPORTUNITIES
 Infrastructure operations; NOC; business systems; technical integration; implementation; internal tools; technical operations; additive manufacturing; field engineering; aerospace/advanced manufacturing. Remote roles preferred; open to exceptional opportunities across the Mid-Atlantic and beyond.
 
-Independent software concepts are distinguished from workplace operational implementations. Proprietary data and credentials excluded.
+
