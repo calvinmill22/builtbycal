@@ -3263,7 +3263,7 @@ await refreshPrintCodes(false);
 await setMode('lookup');
 focusScanner();
 bindDemoReports();
-$('[data-demo-scan]').forEach((button) => {
+$$('[data-demo-scan]').forEach((button) => {
   button.addEventListener('click', () => {
     $('#barcodeInput').value = button.dataset.demoScan;
     $('#scanForm').requestSubmit();
