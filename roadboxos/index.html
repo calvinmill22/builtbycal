@@ -1,0 +1,471 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>RoadBoxOS Demo | BuiltByCal</title>
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="eyebrow">INVENTORY TRACKER</div>
+      <h1>RoadBoxOS <span class="version">MVP 0.23.3</span></h1>
+    </div>
+    <div class="auth-wrap">
+      <div id="authIdentity" class="auth-identity read-only">
+        <span class="auth-dot"></span>
+        <div><b id="authUser">Read-only</b><small id="authRole">Viewing only</small></div>
+      </div>
+      <button id="authButton" class="secondary" hidden>Log In</button>
+    </div>
+  </header>
+
+  <nav class="tabs" aria-label="Primary navigation">
+    <button class="tab active" data-view="scan">Scan Station</button>
+    <button class="tab" data-view="dashboard">Operational Intel</button>
+    <button class="tab" data-view="shows">Super Show Tracker</button>
+    <button class="tab" data-view="billing">Missing Tools Reconciliation</button>
+    <button class="tab" data-view="resupply">Shop / Show Resupply</button>
+    <button class="tab" data-view="recovery">Returns & Material Losses</button>
+    <button class="tab" data-view="roadboxes">Rolling Stock</button>
+    <button class="tab" data-view="ledgers">Internal Ledgers</button>
+    <button class="tab" data-view="catalog">Inventory Catalog + Codes</button>
+    <button class="tab" data-view="kits">Kits</button>
+    <button class="tab" data-view="printcodes">Print Codes</button>
+    <button class="tab" data-view="assets">Assets</button>
+    <button class="tab" data-view="history">History</button>
+  </nav>
+
+  <main>
+    <section id="view-scan" class="view active">
+      <div class="stats" id="stats"></div>
+
+      <div id="readOnlyBanner" class="readonly-banner hidden">
+        <b>READ-ONLY DEMO</b><span>Explore sample inventory, containers, and shows.</span><button class="secondary compact" type="button" data-demo-scan="DEMO-DRILL-01">Scan drill</button><button class="secondary compact" type="button" data-demo-scan="DEMO-BOX-01">Scan road box</button><a class="secondary compact button-link" href="../#work">BuiltByCal</a>
+      </div>
+
+      <div class="panel scan-panel">
+        <div class="panel-head">
+          <div>
+            <div class="eyebrow">BARCODE STATION</div>
+            <h2>Scan something.</h2>
+          </div>
+          <div id="scanStatus" class="scan-status ready">READY</div>
+        </div>
+
+        <div class="mode-grid" role="group" aria-label="Scan mode">
+          <button class="mode active" data-mode="lookup">Lookup</button>
+          <button class="mode" data-mode="checkout">Check Out</button>
+          <button class="mode" data-mode="checkin">Check In</button>
+          <button class="mode" data-mode="move">Move</button>
+        </div>
+
+        <div id="modeContext" class="mode-context hidden"></div>
+
+        <div class="button-row"><button id="openStationPacking" class="primary" type="button">BUILD & PACK CONTAINERS</button></div>
+        <label class="packing-search-label">Search inventory or containers<input id="stationSearch" placeholder="painters tape / m18 drill / container name / barcode" autocomplete="off"></label><div id="stationSearchResults"></div><div id="stationPackingContents"></div>
+        <form id="scanForm" class="scan-form">
+          <label for="barcodeInput">Barcode</label>
+          <div class="scan-input-row">
+            <input id="barcodeInput" class="barcode-input" autofocus autocomplete="off" spellcheck="false" placeholder="Scan barcode or type + Enter" />
+            <button type="submit" class="primary">SCAN</button>
+          </div>
+          <div class="hint">USB scanners that act like a keyboard and send Enter will work directly.</div>
+        </form>
+      </div>
+
+      <div id="flash" class="flash hidden"></div>
+      <div id="result"></div>
+    </section>
+
+
+    <section id="view-dashboard" class="view dashboard-view">
+      <div class="panel ledger-toolbar"><div class="panel-head"><div><div class="eyebrow">OPERATIONAL INTELLIGENCE</div><h2>Readiness, Losses & Recovery</h2></div><button id="refreshOpsDashboard" class="secondary" type="button">Refresh</button></div><div class="show-legend"><span>Totals come from entered reconciliation bills and return / loss records.</span><span>Quantity readiness: 50–100% green · 20–49% yellow · under 20% critical.</span></div></div>
+      <div id="opsDashboard" class="ops-dashboard"></div>
+    </section>
+
+    <section id="view-shows" class="view shows-view">
+      <div class="panel show-toolbar">
+        <div class="panel-head show-toolbar-head">
+          <div>
+            <div class="eyebrow">SUPER SHOW TRACKER</div>
+            <h2>Jobs are the parent. Deployments and tools are the children.</h2>
+          </div>
+          <div class="button-row">
+            <input id="showSearch" class="show-search" placeholder="Search job #, show, client, location…" />
+            <button id="refreshShows" class="secondary">Refresh</button>
+            <button id="newShowButton" class="primary">+ NEW SHOW</button>
+          </div>
+        </div>
+        <div class="show-legend">
+          <span><b>Outstanding tools</b> stay attached to the job until check-in.</span>
+          <span><b>Reconciliation</b> = returned to the building, bill/gear still being closed out.</span>
+        </div>
+      </div>
+      <div id="showBoard" class="show-board"></div>
+    </section>
+
+
+    <section id="view-billing" class="view billing-view">
+      <div class="panel ledger-toolbar">
+        <div class="panel-head ledger-toolbar-head">
+          <div><div class="eyebrow">MISSING TOOLS RECONCILIATION + HISTORICAL RECONSTRUCTION</div><h2>Reconciliation Requests</h2></div>
+          <div class="button-row">
+            <input id="billingSearch" class="show-search" placeholder="Search reconciliation, job, show, client, reference…" />
+            <button id="refreshBilling" class="secondary" type="button">Refresh</button>
+            <button id="newBillingButton" class="primary" type="button">+ NEW RECONCILIATION</button>
+          </div>
+        </div>
+        <div class="show-legend"><span>Paste handwritten notes, link the reconciliation to a Show, then search or scan Catalog/Asset codes into the ledger.</span><span>Manual lines can be promoted into new Catalog families without re-entering the reconciliation.</span></div>
+      </div>
+      <div class="billing-workspace">
+        <section class="panel billing-list-panel"><div id="billingList" class="billing-list"></div></section>
+        <section class="panel billing-detail-panel"><div id="billingDetail"><div class="empty">Choose a reconciliation or create one to begin.</div></div></section>
+      </div>
+    </section>
+
+    <section id="view-resupply" class="view">
+      <div class="panel ledger-toolbar"><div class="panel-head"><div><div class="eyebrow">PURCHASING REQUESTS</div><h2>Shop / Show Resupply</h2></div><div class="button-row"><input id="resupplySearch" placeholder="Search job, department, title…"><button id="refreshResupply" class="secondary">Refresh</button><button id="newResupply" class="primary">+ NEW ORDER</button></div></div></div>
+      <div class="billing-workspace"><section class="panel billing-list-panel"><div id="resupplyList" class="billing-list"></div></section><section class="panel billing-detail-panel"><div id="resupplyDetail"></div></section></div>
+    </section>
+    <section id="view-recovery" class="view">
+      <div class="panel"><div class="panel-head"><div><div class="eyebrow">RECOVERY & WASTE</div><h2>Returns & Material Losses</h2></div><div class="button-row"><button id="newReturn" class="primary">+ HARDWARE RETURN</button><button id="newLoss" class="secondary">+ NON-RETURNABLE / LOSS</button><button id="refreshRecovery" class="secondary">Refresh</button></div></div><div id="recoverySummary"></div></div>
+      <div class="panel"><div class="purchasing-filters"><label>Search<input id="recoverySearch" placeholder="Part, job, description, batch…"></label><label>Type<select id="recoveryKind"><option value="">All types</option><option value="return">Returns</option><option value="loss">Losses</option></select></label><label>Status<select id="recoveryStatus"><option value="">All statuses</option><option value="pile">Unsorted pile</option><option value="ready">Ready to return</option><option value="shipped">Shipped / awaiting credit</option><option value="credited">Credited</option><option value="loss">Non-returnable / loss</option><option value="void">Voided</option></select></label><label>Show<select id="recoveryShow"><option value="">All shows / unassigned</option></select></label><label>From<input id="recoveryFrom" type="date"></label><label>Through<input id="recoveryTo" type="date"></label></div><div class="button-row"><a id="recoveryPrint" class="secondary purchasing-export" target="_blank" rel="noopener">PRINT / SAVE PDF</a><a id="recoveryCsv" class="secondary purchasing-export" target="_blank" rel="noopener">EXPORT CSV</a></div><div id="recoveryList"></div></div>
+    </section>
+
+    <section id="view-roadboxes" class="view ledgers-view">
+      <div class="panel ledger-toolbar">
+        <div class="panel-head ledger-toolbar-head">
+          <div>
+            <div class="eyebrow">CONTAINER TRACKING</div>
+            <h2>Rolling Stock</h2>
+          </div>
+          <div class="button-row">
+            <input id="roadBoxSearch" class="show-search" placeholder="Search box code, name, barcode, type, location…" />
+            <button id="refreshRoadBoxes" class="secondary">Refresh</button>
+            <button id="newRoadBoxButton" class="primary">+ NEW CONTAINER</button>
+          </div>
+        </div>
+        <div class="show-legend">
+          <span><b>Container → Deployment:</b> deploy a base with all attached units; each retains its own contents.</span>
+          <span><b>Zones → Pack List:</b> create named zones and requirements, then scan matching inventory into slots.</span>
+        </div>
+      </div>
+      <div class="panel ledger-panel">
+        <div id="roadBoxList" class="road-box-grid"></div>
+      </div>
+    </section>
+
+
+    <section id="view-ledgers" class="view ledgers-view">
+      <div class="panel ledger-toolbar">
+        <div class="panel-head ledger-toolbar-head">
+          <div>
+            <div class="eyebrow">INTERNAL CHECKOUTS</div>
+            <h2>People & Department Ledgers</h2>
+          </div>
+          <div class="button-row">
+            <input id="ledgerSearch" class="show-search" placeholder="Search people, role, department…" />
+            <button id="refreshLedgers" class="secondary">Refresh</button>
+            <button id="newPersonButton" class="primary">+ PERSON</button>
+            <button id="newDepartmentButton" class="secondary">+ DEPARTMENT</button>
+          </div>
+        </div>
+        <div class="show-legend">
+          <span><b>Person ledger:</b> temporary loans like “Can I borrow the sawzall today?”</span>
+          <span><b>Department ledger:</b> gear assigned internally without tying it to a show.</span>
+        </div>
+      </div>
+      <div class="ledger-columns">
+        <section class="panel ledger-panel">
+          <div class="panel-head"><div><div class="eyebrow">PEOPLE</div><h2>Individual Ledgers</h2></div></div>
+          <div id="peopleLedgerList" class="ledger-list"></div>
+        </section>
+        <section class="panel ledger-panel">
+          <div class="panel-head"><div><div class="eyebrow">DEPARTMENTS</div><h2>Department Ledgers</h2></div></div>
+          <div id="departmentLedgerList" class="ledger-list"></div>
+        </section>
+      </div>
+    </section>
+
+    <section id="view-catalog" class="view ledgers-view">
+      <div class="panel ledger-toolbar">
+        <div class="panel-head ledger-toolbar-head">
+          <div>
+            <div class="eyebrow">INVENTORY FAMILIES + LABEL REGISTRY</div>
+            <h2>Catalog & Generated Codes</h2>
+          </div>
+          <div class="button-row">
+            <input id="catalogSearch" class="show-search" placeholder="Search family, item code, QR code, category…" />
+            <button id="refreshCatalog" class="secondary">Refresh</button>
+            <button id="newCatalogItemButton" class="primary">+ NEW ITEM + QR</button>
+            <button id="newStandaloneCodeButton" class="secondary">+ CODE ONLY</button>
+          </div>
+        </div>
+        <div class="show-legend">
+          <span><b>Serialized:</b> family QR identifies the item type; each physical child gets its own tag.</span>
+          <span><b>Quantity:</b> scan the family QR and enter a count, like 3 rolls of black gaff.</span>
+          <span><b>Hybrid:</b> serialized children plus generic quantity/billing lines for reconciliation.</span>
+        </div>
+        <div id="workboxStandardSummary" class="workbox-standard-catalog-summary"></div>
+      </div>
+      <div class="ledger-columns catalog-columns">
+        <section class="panel ledger-panel">
+          <div class="panel-head"><div><div class="eyebrow">ITEM FAMILIES</div><h2>Inventory Catalog</h2></div></div>
+          <div id="catalogItemList" class="catalog-grid"></div>
+        </section>
+        <section class="panel ledger-panel">
+          <div class="panel-head"><div><div class="eyebrow">GENERATED LABELS</div><h2>Code Registry</h2></div></div>
+          <div id="generatedCodeList" class="code-registry"></div>
+        </section>
+      </div>
+    </section>
+
+
+    <section id="view-kits" class="view ledgers-view">
+      <div class="panel ledger-toolbar">
+        <div class="panel-head ledger-toolbar-head">
+          <div><div class="eyebrow">REUSABLE NESTED STANDARDS</div><h2>Kits</h2></div>
+          <div class="button-row"><input id="kitSearch" class="show-search" placeholder="Search kit name, code, category…" /><button id="refreshKits" class="secondary">Refresh</button><button id="newKitButton" class="primary">+ NEW KIT</button></div>
+        </div>
+        <div class="show-legend"><span><b>Kit:</b> a reusable pack standard such as an M12 Tool Bag.</span><span>Children can be Catalog families, one specific serialized asset, or a placeholder requirement that you will standardize later.</span></div>
+      </div>
+      <div class="panel ledger-panel"><div id="kitList" class="kit-grid"></div></div>
+    </section>
+
+    <section id="view-printcodes" class="view print-codes-view">
+      <div class="panel printcodes-toolbar">
+        <div class="panel-head">
+          <div><div class="eyebrow">LABEL OUTPUT CENTER</div><h2>Print Codes</h2></div>
+          <div class="button-row">
+            <a href="/api/backup/full" class="secondary button-link" data-auth-download hidden>FULL DATABASE BACKUP</a>
+            <button id="refreshPrintCodes" class="secondary" type="button">Refresh</button>
+          </div>
+        </div>
+        <div class="show-legend"><span>Filter by the whole registry, Road Box, or physical zone; then select exactly the labels you want.</span><span>Graphics export creates individual SVG files + a CSV manifest inside one ZIP.</span></div>
+        <div class="printcodes-controls">
+          <label>Scope<select id="printScope"><option value="all">All codes / entire registry</option><option value="road_box">Road Box</option><option value="zone">Road Box + Zone</option><option value="custom">Custom list</option></select></label>
+          <label id="printRoadBoxWrap">Road Box<select id="printRoadBox"><option value="">All boxes</option></select></label>
+          <label id="printZoneWrap">Zone<select id="printZone"><option value="">All zones</option></select></label>
+          <label>Record type<select id="printEntityType"><option value="">All record types</option><option value="asset">Serialized Assets</option><option value="catalog_item">Catalog Families</option><option value="road_box">Rolling Stock</option><option value="kit">Kits</option><option value="standalone">Standalone Codes</option></select></label>
+          <label class="span-2">Search<input id="printCodeSearch" placeholder="Code, item, box, zone, family…" /></label>
+          <label>Output<select id="printCodeKind"><option value="combined">QR + Barcode</option><option value="qr">QR only</option><option value="barcode">Barcode only</option></select></label>
+          <label>Size<select id="printCodeSize"><option value="small">Small</option><option value="medium" selected>Medium</option><option value="large">Large</option></select></label>
+          <label class="check-label"><input id="printIncludeTitle" type="checkbox" checked /> Include name / title</label>
+          <label>ZIP organization<select id="printZipOrganization"><option value="road_box_zone">Road Box / Zone folders</option><option value="flat">Flat folder</option></select></label>
+        </div>
+        <div class="label-size-reference">
+          <div><b>SMALL</b><span>QR 9/16&quot; · barcode 56.25% of Medium</span></div>
+          <div><b>MEDIUM</b><span>QR 1&quot; · current shop label scale</span></div>
+          <div><b>LARGE</b><span>QR 2-3/4&quot; · barcode 150% of Medium</span></div>
+        </div>
+        <div class="button-row printcodes-actions">
+          <button id="selectFilteredCodes" class="secondary" type="button">SELECT FILTERED</button>
+          <button id="clearSelectedCodes" class="secondary" type="button">CLEAR</button>
+          <button id="printSelectedCodes" class="primary" type="button">PRINT SELECTED</button>
+          <button id="exportSelectedCodes" class="primary" type="button">EXPORT SVG ZIP</button>
+          <span id="printSelectionCount" class="selection-count">0 selected</span>
+        </div>
+      </div>
+      <div class="panel printcodes-list-panel">
+        <div id="printCodesSummary" class="printcodes-summary"></div>
+        <div id="printCodesList" class="printcodes-list"></div>
+      </div>
+    </section>
+
+    <section id="view-assets" class="view">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="eyebrow">INVENTORY</div>
+            <h2>Assets</h2>
+          </div>
+          <button id="refreshAssets" class="secondary">Refresh</button>
+        </div>
+        <input id="assetSearch" class="search" placeholder="Search name, barcode, serial, location, show assignment…" />
+        <div id="assetTableWrap"></div>
+      </div>
+    </section>
+
+    <section id="view-history" class="view">
+      <div class="panel">
+        <div class="panel-head">
+          <div>
+            <div class="eyebrow">AUDIT TRAIL</div>
+            <h2>Recent asset activity</h2>
+          </div>
+          <div class="button-row">
+            <a href="/api/export" class="secondary button-link" data-auth-download hidden>Backup JSON</a>
+            <a href="/api/backup/full" class="primary button-link" data-auth-download hidden>FULL BACKUP + PHOTOS</a>
+            <button id="refreshHistory" class="secondary">Refresh</button>
+          </div>
+        </div>
+        <div id="historyList"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="loginModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="loginTitle">
+    <div class="modal-backdrop"></div>
+    <div class="login-card">
+      <div class="eyebrow">AUTHORIZED OPERATORS</div>
+      <h2 id="loginTitle">RoadBoxOS Login</h2>
+      <p class="login-copy">Inventory and show status are visible without an account. Any change requires an operator login.</p>
+      <form id="loginForm" class="login-form">
+        <label>Username<input id="loginUsername" name="username" autocomplete="username" required /></label>
+        <label>Password<input id="loginPassword" name="password" type="password" autocomplete="current-password" required /></label>
+        <div id="loginError" class="login-error hidden"></div>
+        <button class="primary" type="submit">LOG IN</button>
+        <button id="continueReadOnly" class="secondary" type="button">Continue Read-Only</button>
+      </form>
+    </div>
+  </div>
+
+  <div id="showModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="showModalTitle">
+    <div class="modal-backdrop" data-close-show-modal></div>
+    <div class="show-modal-card">
+      <div class="modal-title-row">
+        <div>
+          <div id="showModalEyebrow" class="eyebrow">SHOW / JOB</div>
+          <h2 id="showModalTitle">Show</h2>
+        </div>
+        <button class="secondary compact" data-close-show-modal>Close</button>
+      </div>
+      <div id="showModalBody"></div>
+    </div>
+  </div>
+
+
+  <div id="roadBoxModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="roadBoxModalTitle">
+    <div class="modal-backdrop" data-close-road-box-modal></div>
+    <div class="show-modal-card ledger-modal-card">
+      <div class="modal-title-row">
+        <div>
+          <div id="roadBoxModalEyebrow" class="eyebrow">CONTAINER</div>
+          <h2 id="roadBoxModalTitle">Road Box</h2>
+        </div>
+        <button class="secondary compact" data-close-road-box-modal>Close</button>
+      </div>
+      <div id="roadBoxModalBody"></div>
+    </div>
+  </div>
+
+
+
+  <div id="workboxCheckModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="workboxCheckTitle">
+    <div class="modal-backdrop" data-close-workbox-check></div>
+    <div class="show-modal-card workbox-check-card">
+      <div class="modal-title-row">
+        <div>
+          <div id="workboxCheckEyebrow" class="eyebrow">WORKBOX CHECK</div>
+          <h2 id="workboxCheckTitle">Check Workbox</h2>
+        </div>
+        <button class="secondary compact" data-close-workbox-check>Close</button>
+      </div>
+      <div id="workboxCheckBody"></div>
+    </div>
+  </div>
+
+  <div id="workboxCommissionModal" class="modal hidden workbox-submodal" role="dialog" aria-modal="true" aria-labelledby="workboxCommissionTitle">
+    <div class="modal-backdrop" data-close-workbox-commission></div>
+    <div class="show-modal-card workbox-action-card">
+      <div class="modal-title-row">
+        <div>
+          <div class="eyebrow">COMMISSION INVENTORY</div>
+          <h2 id="workboxCommissionTitle">Label Next Item</h2>
+        </div>
+        <button class="secondary compact" data-close-workbox-commission>Close</button>
+      </div>
+      <div id="workboxCommissionBody"></div>
+    </div>
+  </div>
+
+  <div id="workboxFamilyModal" class="modal hidden workbox-submodal" role="dialog" aria-modal="true" aria-labelledby="workboxFamilyTitle">
+    <div class="modal-backdrop" data-close-workbox-family></div>
+    <div class="show-modal-card workbox-action-card">
+      <div class="modal-title-row">
+        <div>
+          <div class="eyebrow">STANDARD SLOT</div>
+          <h2 id="workboxFamilyTitle">Swap Catalog Family</h2>
+        </div>
+        <button class="secondary compact" data-close-workbox-family>Close</button>
+      </div>
+      <div id="workboxFamilyBody"></div>
+    </div>
+  </div>
+
+  <div id="workboxKitModal" class="modal hidden workbox-submodal" role="dialog" aria-modal="true" aria-labelledby="workboxKitTitle">
+    <div class="modal-backdrop" data-close-workbox-kit></div>
+    <div class="show-modal-card workbox-action-card">
+      <div class="modal-title-row"><div><div class="eyebrow">NESTED KIT</div><h2 id="workboxKitTitle">Add Kit to Zone</h2></div><button class="secondary compact" data-close-workbox-kit>Close</button></div>
+      <div id="workboxKitBody"></div>
+    </div>
+  </div>
+
+  <div id="kitModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="kitModalTitle">
+    <div class="modal-backdrop" data-close-kit-modal></div>
+    <div class="show-modal-card catalog-modal-card">
+      <div class="modal-title-row"><div><div id="kitModalEyebrow" class="eyebrow">KIT BUILDER</div><h2 id="kitModalTitle">Kit</h2></div><button class="secondary compact" data-close-kit-modal>Close</button></div>
+      <div id="kitModalBody"></div>
+    </div>
+  </div>
+
+  <div id="ledgerModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="ledgerModalTitle">
+    <div class="modal-backdrop" data-close-ledger-modal></div>
+    <div class="show-modal-card ledger-modal-card">
+      <div class="modal-title-row">
+        <div>
+          <div id="ledgerModalEyebrow" class="eyebrow">INTERNAL LEDGER</div>
+          <h2 id="ledgerModalTitle">Ledger</h2>
+        </div>
+        <button class="secondary compact" data-close-ledger-modal>Close</button>
+      </div>
+      <div id="ledgerModalBody"></div>
+    </div>
+  </div>
+
+  <div id="billingModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="billingModalTitle">
+    <div class="modal-backdrop" data-close-billing-modal></div>
+    <div class="show-modal-card catalog-modal-card">
+      <div class="modal-title-row"><div><div id="billingModalEyebrow" class="eyebrow">MISSING TOOLS RECONCILIATION</div><h2 id="billingModalTitle">Reconciliation</h2></div><button class="secondary compact" data-close-billing-modal>Close</button></div>
+      <div id="billingModalBody"></div>
+    </div>
+  </div>
+
+  <div id="catalogModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="catalogModalTitle">
+    <div class="modal-backdrop" data-close-catalog-modal></div>
+    <div class="show-modal-card catalog-modal-card">
+      <div class="modal-title-row">
+        <div>
+          <div id="catalogModalEyebrow" class="eyebrow">INVENTORY CATALOG</div>
+          <h2 id="catalogModalTitle">Catalog Item</h2>
+        </div>
+        <button class="secondary compact" data-close-catalog-modal>Close</button>
+      </div>
+      <div id="catalogModalBody"></div>
+    </div>
+  </div>
+
+  <template id="assetCardTemplate">
+    <article class="asset-card">
+      <div class="asset-card-top">
+        <div>
+          <div class="asset-kicker"></div>
+          <h3 class="asset-name"></h3>
+        </div>
+        <span class="status-pill"></span>
+      </div>
+      <dl class="asset-meta"></dl>
+      <div class="asset-media-host"></div>
+      <div class="asset-actions"></div>
+    </article>
+  </template>
+
+  <div id="purchasingModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="purchasingModalTitle"><div class="modal-backdrop" data-close-purchasing></div><div class="modal-card show-modal-card"><div class="modal-title-row"><h2 id="purchasingModalTitle"></h2><button class="secondary compact" data-close-purchasing type="button">Close</button></div><div id="purchasingModalBody"></div></div></div>
+
+  <div id="packingModal" class="modal hidden" role="dialog" aria-modal="true" aria-labelledby="packingModalTitle"><div class="modal-backdrop" data-close-packing></div><div class="modal-card show-modal-card"><div class="modal-title-row"><h2 id="packingModalTitle">Build & Pack Containers</h2><button class="secondary" data-close-packing type="button">Close</button></div><div id="packingModalBody"></div></div></div>
+
+  <script type="module" src="./app.js"></script>
+</body>
+</html>
